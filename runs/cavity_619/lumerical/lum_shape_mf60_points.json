@@ -1,0 +1,479 @@
+{
+ "cell": {
+  "w": 550,
+  "t": 120,
+  "hx_a": 0.53,
+  "hy_w": 0.77
+ },
+ "points": [
+  {
+   "a": 187.2,
+   "d": 0.1,
+   "xi": 4.0,
+   "chi": 3.5,
+   "comsol_lam_nm": 607.04,
+   "comsol_Q": 37300000.0,
+   "file": "sh_d10_xi4_chi3.5_a187.2.npz"
+  },
+  {
+   "a": 195.2,
+   "d": 0.1,
+   "xi": 4.0,
+   "chi": 3.5,
+   "comsol_lam_nm": 625.52,
+   "comsol_Q": 40300000.0,
+   "file": "sh_d10_xi4_chi3.5_a195.2.npz"
+  },
+  {
+   "a": 187.2,
+   "d": 0.1,
+   "xi": 4.0,
+   "chi": 5.0,
+   "comsol_lam_nm": 616.53,
+   "comsol_Q": 4910000.0,
+   "file": "sh_d10_xi4_chi5.0_a187.2.npz"
+  },
+  {
+   "a": 195.2,
+   "d": 0.1,
+   "xi": 4.0,
+   "chi": 5.0,
+   "comsol_lam_nm": 635.28,
+   "comsol_Q": 4810000.0,
+   "file": "sh_d10_xi4_chi5.0_a195.2.npz"
+  },
+  {
+   "a": 187.2,
+   "d": 0.1,
+   "xi": 6.0,
+   "chi": 4.0,
+   "comsol_lam_nm": 605.18,
+   "comsol_Q": 42800000.0,
+   "file": "sh_d10_xi6_chi4.0_a187.2.npz"
+  },
+  {
+   "a": 195.2,
+   "d": 0.1,
+   "xi": 6.0,
+   "chi": 4.0,
+   "comsol_lam_nm": 623.56,
+   "comsol_Q": 42800000.0,
+   "file": "sh_d10_xi6_chi4.0_a195.2.npz"
+  },
+  {
+   "a": 187.2,
+   "d": 0.1,
+   "xi": 6.0,
+   "chi": 5.0,
+   "comsol_lam_nm": 612.58,
+   "comsol_Q": 4940000.0,
+   "file": "sh_d10_xi6_chi5.0_a187.2.npz"
+  },
+  {
+   "a": 195.2,
+   "d": 0.1,
+   "xi": 6.0,
+   "chi": 5.0,
+   "comsol_lam_nm": 631.2,
+   "comsol_Q": 6420000.0,
+   "file": "sh_d10_xi6_chi5.0_a195.2.npz"
+  },
+  {
+   "a": 187.2,
+   "d": 0.1,
+   "xi": 6.0,
+   "chi": 6.0,
+   "comsol_lam_nm": 618.95,
+   "comsol_Q": 1640000.0,
+   "file": "sh_d10_xi6_chi6.0_a187.2.npz"
+  },
+  {
+   "a": 195.2,
+   "d": 0.1,
+   "xi": 6.0,
+   "chi": 6.0,
+   "comsol_lam_nm": 637.76,
+   "comsol_Q": 1960000.0,
+   "file": "sh_d10_xi6_chi6.0_a195.2.npz"
+  },
+  {
+   "a": 187.2,
+   "d": 0.1,
+   "xi": 8.0,
+   "chi": 5.0,
+   "comsol_lam_nm": 607.7,
+   "comsol_Q": 1350000.0,
+   "file": "sh_d10_xi8_chi5.0_a187.2.npz"
+  },
+  {
+   "a": 195.2,
+   "d": 0.1,
+   "xi": 8.0,
+   "chi": 5.0,
+   "comsol_lam_nm": 626.09,
+   "comsol_Q": 2180000.0,
+   "file": "sh_d10_xi8_chi5.0_a195.2.npz"
+  },
+  {
+   "a": 187.2,
+   "d": 0.1,
+   "xi": 8.0,
+   "chi": 6.0,
+   "comsol_lam_nm": 615.37,
+   "comsol_Q": 759000.0,
+   "file": "sh_d10_xi8_chi6.0_a187.2.npz"
+  },
+  {
+   "a": 195.2,
+   "d": 0.1,
+   "xi": 8.0,
+   "chi": 6.0,
+   "comsol_lam_nm": 634.04,
+   "comsol_Q": 1290000.0,
+   "file": "sh_d10_xi8_chi6.0_a195.2.npz"
+  },
+  {
+   "a": 187.2,
+   "d": 0.1,
+   "xi": 10.0,
+   "chi": 6.0,
+   "comsol_lam_nm": 611.04,
+   "comsol_Q": 201000.0,
+   "file": "sh_d10_xi10_chi6.0_a187.2.npz"
+  },
+  {
+   "a": 195.2,
+   "d": 0.1,
+   "xi": 10.0,
+   "chi": 6.0,
+   "comsol_lam_nm": 629.5,
+   "comsol_Q": 363000.0,
+   "file": "sh_d10_xi10_chi6.0_a195.2.npz"
+  },
+  {
+   "a": 192.7,
+   "d": 0.13,
+   "xi": 4.0,
+   "chi": 4.0,
+   "comsol_lam_nm": 614.36,
+   "comsol_Q": 6260000.0,
+   "file": "sh_d13_xi4_chi4.0_a192.7.npz"
+  },
+  {
+   "a": 200.7,
+   "d": 0.13,
+   "xi": 4.0,
+   "chi": 4.0,
+   "comsol_lam_nm": 632.47,
+   "comsol_Q": 8350000.0,
+   "file": "sh_d13_xi4_chi4.0_a200.7.npz"
+  },
+  {
+   "a": 191.2,
+   "d": 0.13,
+   "xi": 4.0,
+   "chi": 5.0,
+   "comsol_lam_nm": 619.33,
+   "comsol_Q": 1520000.0,
+   "file": "sh_d13_xi4_chi5.0_a191.2.npz"
+  },
+  {
+   "a": 192.7,
+   "d": 0.13,
+   "xi": 4.0,
+   "chi": 5.0,
+   "comsol_lam_nm": 622.81,
+   "comsol_Q": 1730000.0,
+   "file": "sh_d13_xi4_chi5.0_a192.7.npz"
+  },
+  {
+   "a": 200.7,
+   "d": 0.13,
+   "xi": 4.0,
+   "chi": 5.0,
+   "comsol_lam_nm": 641.17,
+   "comsol_Q": 2850000.0,
+   "file": "sh_d13_xi4_chi5.0_a200.7.npz"
+  },
+  {
+   "a": 192.7,
+   "d": 0.13,
+   "xi": 6.0,
+   "chi": 4.0,
+   "comsol_lam_nm": 607.96,
+   "comsol_Q": 776000.0,
+   "file": "sh_d13_xi6_chi4.0_a192.7.npz"
+  },
+  {
+   "a": 200.7,
+   "d": 0.13,
+   "xi": 6.0,
+   "chi": 4.0,
+   "comsol_lam_nm": 625.77,
+   "comsol_Q": 1210000.0,
+   "file": "sh_d13_xi6_chi4.0_a200.7.npz"
+  },
+  {
+   "a": 192.7,
+   "d": 0.13,
+   "xi": 6.0,
+   "chi": 4.5,
+   "comsol_lam_nm": 613.55,
+   "comsol_Q": 469000.0,
+   "file": "sh_d13_xi6_chi4.5_a192.7.npz"
+  },
+  {
+   "a": 200.7,
+   "d": 0.13,
+   "xi": 6.0,
+   "chi": 4.5,
+   "comsol_lam_nm": 631.58,
+   "comsol_Q": 753000.0,
+   "file": "sh_d13_xi6_chi4.5_a200.7.npz"
+  },
+  {
+   "a": 192.7,
+   "d": 0.13,
+   "xi": 6.0,
+   "chi": 5.0,
+   "comsol_lam_nm": 618.61,
+   "comsol_Q": 377000.0,
+   "file": "sh_d13_xi6_chi5.0_a192.7.npz"
+  },
+  {
+   "a": 200.7,
+   "d": 0.13,
+   "xi": 6.0,
+   "chi": 5.0,
+   "comsol_lam_nm": 636.81,
+   "comsol_Q": 669000.0,
+   "file": "sh_d13_xi6_chi5.0_a200.7.npz"
+  },
+  {
+   "a": 191.1,
+   "d": 0.13,
+   "xi": 6.0,
+   "chi": 5.5,
+   "comsol_lam_nm": 619.41,
+   "comsol_Q": 303000.0,
+   "file": "sh_d13_xi6_chi5.5_a191.1.npz"
+  },
+  {
+   "a": 192.7,
+   "d": 0.13,
+   "xi": 6.0,
+   "chi": 5.5,
+   "comsol_lam_nm": 623.12,
+   "comsol_Q": 346000.0,
+   "file": "sh_d13_xi6_chi5.5_a192.7.npz"
+  },
+  {
+   "a": 200.7,
+   "d": 0.13,
+   "xi": 6.0,
+   "chi": 5.5,
+   "comsol_lam_nm": 641.46,
+   "comsol_Q": 678000.0,
+   "file": "sh_d13_xi6_chi5.5_a200.7.npz"
+  },
+  {
+   "a": 192.7,
+   "d": 0.13,
+   "xi": 8.0,
+   "chi": 5.0,
+   "comsol_lam_nm": 613.24,
+   "comsol_Q": 82700.0,
+   "file": "sh_d13_xi8_chi5.0_a192.7.npz"
+  },
+  {
+   "a": 200.7,
+   "d": 0.13,
+   "xi": 8.0,
+   "chi": 5.0,
+   "comsol_lam_nm": 631.15,
+   "comsol_Q": 146000.0,
+   "file": "sh_d13_xi8_chi5.0_a200.7.npz"
+  },
+  {
+   "a": 192.7,
+   "d": 0.13,
+   "xi": 8.0,
+   "chi": 5.5,
+   "comsol_lam_nm": 618.87,
+   "comsol_Q": 99200.0,
+   "file": "sh_d13_xi8_chi5.5_a192.7.npz"
+  },
+  {
+   "a": 200.7,
+   "d": 0.13,
+   "xi": 8.0,
+   "chi": 5.5,
+   "comsol_lam_nm": 637.02,
+   "comsol_Q": 195000.0,
+   "file": "sh_d13_xi8_chi5.5_a200.7.npz"
+  },
+  {
+   "a": 197.7,
+   "d": 0.16,
+   "xi": 4.0,
+   "chi": 4.0,
+   "comsol_lam_nm": 617.49,
+   "comsol_Q": 448000.0,
+   "file": "sh_d16_xi4_chi4.0_a197.7.npz"
+  },
+  {
+   "a": 205.7,
+   "d": 0.16,
+   "xi": 4.0,
+   "chi": 4.0,
+   "comsol_lam_nm": 635.19,
+   "comsol_Q": 760000.0,
+   "file": "sh_d16_xi4_chi4.0_a205.7.npz"
+  },
+  {
+   "a": 193.9,
+   "d": 0.16,
+   "xi": 4.0,
+   "chi": 5.0,
+   "comsol_lam_nm": 619.25,
+   "comsol_Q": 153000.0,
+   "file": "sh_d16_xi4_chi5.0_a193.9.npz"
+  },
+  {
+   "a": 197.7,
+   "d": 0.16,
+   "xi": 4.0,
+   "chi": 5.0,
+   "comsol_lam_nm": 627.94,
+   "comsol_Q": 212000.0,
+   "file": "sh_d16_xi4_chi5.0_a197.7.npz"
+  },
+  {
+   "a": 205.7,
+   "d": 0.16,
+   "xi": 4.0,
+   "chi": 5.0,
+   "comsol_lam_nm": 645.95,
+   "comsol_Q": 410000.0,
+   "file": "sh_d16_xi4_chi5.0_a205.7.npz"
+  },
+  {
+   "a": 205.7,
+   "d": 0.16,
+   "xi": 6.0,
+   "chi": 4.0,
+   "comsol_lam_nm": 628.02,
+   "comsol_Q": 110000.0,
+   "file": "sh_d16_xi6_chi4.0_a205.7.npz"
+  },
+  {
+   "a": 197.7,
+   "d": 0.16,
+   "xi": 6.0,
+   "chi": 4.5,
+   "comsol_lam_nm": 618.05,
+   "comsol_Q": 67300.0,
+   "file": "sh_d16_xi6_chi4.5_a197.7.npz"
+  },
+  {
+   "a": 205.7,
+   "d": 0.16,
+   "xi": 6.0,
+   "chi": 4.5,
+   "comsol_lam_nm": 635.68,
+   "comsol_Q": 125000.0,
+   "file": "sh_d16_xi6_chi4.5_a205.7.npz"
+  },
+  {
+   "a": 195.5,
+   "d": 0.16,
+   "xi": 6.0,
+   "chi": 5.0,
+   "comsol_lam_nm": 619.39,
+   "comsol_Q": 64200.0,
+   "file": "sh_d16_xi6_chi5.0_a195.5.npz"
+  },
+  {
+   "a": 197.7,
+   "d": 0.16,
+   "xi": 6.0,
+   "chi": 5.0,
+   "comsol_lam_nm": 624.37,
+   "comsol_Q": 78200.0,
+   "file": "sh_d16_xi6_chi5.0_a197.7.npz"
+  },
+  {
+   "a": 205.7,
+   "d": 0.16,
+   "xi": 6.0,
+   "chi": 5.0,
+   "comsol_lam_nm": 642.22,
+   "comsol_Q": 159000.0,
+   "file": "sh_d16_xi6_chi5.0_a205.7.npz"
+  },
+  {
+   "a": 197.6,
+   "d": 0.16,
+   "xi": 8.0,
+   "chi": 5.0,
+   "comsol_lam_nm": 619.33,
+   "comsol_Q": 27500.0,
+   "file": "sh_d16_xi8_chi5.0_a197.6.npz"
+  },
+  {
+   "a": 197.7,
+   "d": 0.16,
+   "xi": 8.0,
+   "chi": 5.0,
+   "comsol_lam_nm": 619.56,
+   "comsol_Q": 27800.0,
+   "file": "sh_d16_xi8_chi5.0_a197.7.npz"
+  },
+  {
+   "a": 205.7,
+   "d": 0.16,
+   "xi": 8.0,
+   "chi": 5.0,
+   "comsol_lam_nm": 637.15,
+   "comsol_Q": 57400.0,
+   "file": "sh_d16_xi8_chi5.0_a205.7.npz"
+  },
+  {
+   "a": 194.6,
+   "d": 0.16,
+   "xi": 8.0,
+   "chi": 5.5,
+   "comsol_lam_nm": 619.33,
+   "comsol_Q": 38100.0,
+   "file": "sh_d16_xi8_chi5.5_a194.6.npz"
+  },
+  {
+   "a": 197.7,
+   "d": 0.16,
+   "xi": 8.0,
+   "chi": 5.5,
+   "comsol_lam_nm": 626.34,
+   "comsol_Q": 55200.0,
+   "file": "sh_d16_xi8_chi5.5_a197.7.npz"
+  },
+  {
+   "a": 205.7,
+   "d": 0.16,
+   "xi": 8.0,
+   "chi": 5.5,
+   "comsol_lam_nm": 644.21,
+   "comsol_Q": 150000.0,
+   "file": "sh_d16_xi8_chi5.5_a205.7.npz"
+  },
+  {
+   "a": 205.7,
+   "d": 0.16,
+   "xi": 10.0,
+   "chi": 5.5,
+   "comsol_lam_nm": 639.73,
+   "comsol_Q": 93300.0,
+   "file": "sh_d16_xi10_chi5.5_a205.7.npz"
+  }
+ ],
+ "note": "Replicates w550 / 60 nm taper-shape sweep (sweep_shape*.py). Check point = highest-Q COMSOL point within 3 nm of 619.4 nm: 616.53 nm, Q 4.91e+06."
+}

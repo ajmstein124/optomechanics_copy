@@ -1,0 +1,65 @@
+{
+ "cell": {
+  "w": 650,
+  "t": 120,
+  "hx_a": 0.53,
+  "hy_w": 0.77
+ },
+ "points": [
+  {
+   "a": 185.0,
+   "d": 0.1,
+   "xi": 4.0,
+   "chi": 3.5,
+   "comsol_lam_nm": 608.34,
+   "comsol_Q": 4810000.0,
+   "file": "ad_a185_d10.npz"
+  },
+  {
+   "a": 191.0,
+   "d": 0.1,
+   "xi": 4.0,
+   "chi": 3.5,
+   "comsol_lam_nm": 622.69,
+   "comsol_Q": 9130000.0,
+   "file": "ad_a191_d10.npz"
+  },
+  {
+   "a": 191.0,
+   "d": 0.13,
+   "xi": 4.0,
+   "chi": 3.5,
+   "comsol_lam_nm": 612.5,
+   "comsol_Q": 37400000.0,
+   "file": "ad_a191_d13.npz"
+  },
+  {
+   "a": 194.0,
+   "d": 0.13,
+   "xi": 4.0,
+   "chi": 3.5,
+   "comsol_lam_nm": 619.47,
+   "comsol_Q": 29700000.0,
+   "file": "ad_a194_d13.npz"
+  },
+  {
+   "a": 198.0,
+   "d": 0.16,
+   "xi": 4.0,
+   "chi": 3.5,
+   "comsol_lam_nm": 619.11,
+   "comsol_Q": 128000.0,
+   "file": "ad_a198_d16.npz"
+  },
+  {
+   "a": 201.0,
+   "d": 0.16,
+   "xi": 4.0,
+   "chi": 3.5,
+   "comsol_lam_nm": 625.85,
+   "comsol_Q": 147000.0,
+   "file": "ad_a201_d16.npz"
+  }
+ ],
+ "note": "Replicates w650 / 60 nm (a, d) points, base shape xi 4 / chi 3.5. Check point = highest-Q COMSOL point within 3 nm of 619.4 nm: 619.47 nm, Q 2.97e+07."
+}

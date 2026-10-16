@@ -1,0 +1,164 @@
+{
+ "cell": {
+  "w": 650,
+  "t": 120,
+  "hx_a": 0.53,
+  "hy_w": 0.77
+ },
+ "points": [
+  {
+   "a": 181.6,
+   "d": 0.1,
+   "xi": 6.0,
+   "chi": 4.0,
+   "comsol_lam_nm": 598.78,
+   "comsol_Q": 6280000.0,
+   "file": "sh_d10_xi6_chi4.0_a181.6.npz"
+  },
+  {
+   "a": 189.6,
+   "d": 0.1,
+   "xi": 6.0,
+   "chi": 4.0,
+   "comsol_lam_nm": 617.82,
+   "comsol_Q": 17100000.0,
+   "file": "sh_d10_xi6_chi4.0_a189.6.npz"
+  },
+  {
+   "a": 190.3,
+   "d": 0.1,
+   "xi": 6.0,
+   "chi": 4.0,
+   "comsol_lam_nm": 619.49,
+   "comsol_Q": 18400000.0,
+   "file": "sh_d10_xi6_chi4.0_a190.3.npz"
+  },
+  {
+   "a": 181.6,
+   "d": 0.1,
+   "xi": 6.0,
+   "chi": 4.5,
+   "comsol_lam_nm": 602.31,
+   "comsol_Q": 4560000.0,
+   "file": "sh_d10_xi6_chi4.5_a181.6.npz"
+  },
+  {
+   "a": 189.6,
+   "d": 0.1,
+   "xi": 6.0,
+   "chi": 4.5,
+   "comsol_lam_nm": 621.52,
+   "comsol_Q": 4380000.0,
+   "file": "sh_d10_xi6_chi4.5_a189.6.npz"
+  },
+  {
+   "a": 181.6,
+   "d": 0.1,
+   "xi": 6.0,
+   "chi": 5.0,
+   "comsol_lam_nm": 605.63,
+   "comsol_Q": 775000.0,
+   "file": "sh_d10_xi6_chi5.0_a181.6.npz"
+  },
+  {
+   "a": 189.6,
+   "d": 0.1,
+   "xi": 6.0,
+   "chi": 5.0,
+   "comsol_lam_nm": 624.99,
+   "comsol_Q": 1070000.0,
+   "file": "sh_d10_xi6_chi5.0_a189.6.npz"
+  },
+  {
+   "a": 186.0,
+   "d": 0.13,
+   "xi": 6.0,
+   "chi": 4.5,
+   "comsol_lam_nm": 605.07,
+   "comsol_Q": 37300.0,
+   "file": "sh_d13_xi6_chi4.5_a186.0.npz"
+  },
+  {
+   "a": 194.0,
+   "d": 0.13,
+   "xi": 6.0,
+   "chi": 4.5,
+   "comsol_lam_nm": 623.82,
+   "comsol_Q": 56100.0,
+   "file": "sh_d13_xi6_chi4.5_a194.0.npz"
+  },
+  {
+   "a": 186.0,
+   "d": 0.13,
+   "xi": 6.0,
+   "chi": 5.0,
+   "comsol_lam_nm": 609.62,
+   "comsol_Q": 23100.0,
+   "file": "sh_d13_xi6_chi5.0_a186.0.npz"
+  },
+  {
+   "a": 194.0,
+   "d": 0.13,
+   "xi": 6.0,
+   "chi": 5.0,
+   "comsol_lam_nm": 628.61,
+   "comsol_Q": 36400.0,
+   "file": "sh_d13_xi6_chi5.0_a194.0.npz"
+  },
+  {
+   "a": 190.1,
+   "d": 0.16,
+   "xi": 6.0,
+   "chi": 4.5,
+   "comsol_lam_nm": 608.06,
+   "comsol_Q": 4270.0,
+   "file": "sh_d16_xi6_chi4.5_a190.1.npz"
+  },
+  {
+   "a": 198.1,
+   "d": 0.16,
+   "xi": 6.0,
+   "chi": 4.5,
+   "comsol_lam_nm": 626.42,
+   "comsol_Q": 6550.0,
+   "file": "sh_d16_xi6_chi4.5_a198.1.npz"
+  },
+  {
+   "a": 190.1,
+   "d": 0.16,
+   "xi": 6.0,
+   "chi": 5.0,
+   "comsol_lam_nm": 613.67,
+   "comsol_Q": 3530.0,
+   "file": "sh_d16_xi6_chi5.0_a190.1.npz"
+  },
+  {
+   "a": 198.1,
+   "d": 0.16,
+   "xi": 6.0,
+   "chi": 5.0,
+   "comsol_lam_nm": 632.33,
+   "comsol_Q": 5630.0,
+   "file": "sh_d16_xi6_chi5.0_a198.1.npz"
+  },
+  {
+   "a": 190.1,
+   "d": 0.16,
+   "xi": 8.0,
+   "chi": 5.0,
+   "comsol_lam_nm": 609.95,
+   "comsol_Q": 1300.0,
+   "file": "sh_d16_xi8_chi5.0_a190.1.npz"
+  },
+  {
+   "a": 198.1,
+   "d": 0.16,
+   "xi": 8.0,
+   "chi": 5.0,
+   "comsol_lam_nm": 628.29,
+   "comsol_Q": 2050.0,
+   "file": "sh_d16_xi8_chi5.0_a198.1.npz"
+  }
+ ],
+ "note": "Replicates w650 / 60 nm taper-shape sweep. Check point = highest-Q COMSOL point within 3 nm of 619.4 nm: 619.49 nm, Q 1.84e+07."
+}

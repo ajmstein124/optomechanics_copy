@@ -1,0 +1,20 @@
+{
+  "source": "Oh et al. 2026, Optica 13, 485, Fig. 1(d,e) (mirror unit cell); digitized from 600-dpi render of the vector figure by digitize_reference.py",
+  "geometry_nm": {"a": 650, "w": 800, "hx": 343, "hy": 617, "t": 250, "hole": "ellipse, centered on beam axis"},
+  "material_model": "NOT STATED in main text or Supplement 1 -> reproduction uses our isotropic diamond (E=1050 GPa, nu=0.07, rho=3500) by user decision 2026-10-14",
+  "mechanical": {
+    "class_mapping": "red = even vector symmetry in y and z = our Y+Z+ (Symmetry on y=0 and z=0); blue = all other classes",
+    "quasi_gap_GHz_from_shading": [3.59, 7.15],
+    "cavity_breathing_mode_GHz": 6.34,
+    "red_bands_at_X_GHz": [3.45, 9.29, 9.76],
+    "lowest_red_at_Gamma_GHz": [0.0, 7.70, 8.20],
+    "digitized_curves": "oh2026_fig1e_digitized.csv"
+  },
+  "optical": {
+    "class": "TE-like: odd vector symmetry in y, even in z (red)",
+    "band_edges_at_X_THz": [175.2, 213.8],
+    "light_line_at_X_THz": 230.6,
+    "cavity_mode_THz": 192, "cavity_wavelength_nm": 1559,
+    "digitized_curves": "oh2026_fig1d_digitized.csv"
+  }
+}

@@ -1,0 +1,10 @@
+/data/
+/results/
+/simu_data/
+*.mph
+__pycache__/
+*.pyc
+.DS_Store
+.last_job.json
+.pytest_cache/
+context_docs/

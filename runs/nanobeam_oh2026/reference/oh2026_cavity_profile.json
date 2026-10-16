@@ -1,0 +1,11 @@
+{
+  "source": "Oh 2026 Fig. 1(b) (outline drawing of the simulated cavity, 600x55 px raster embedded in the PDF), measured by edge detection along the beam centerline and through each hole center. Scale from the mirror pitch (14.35 px = 650 nm, 45.3 nm/px); check: mirror hx 343 / hy 617 read as ~345 / 623 nm. Resolution ~1 px = 45 nm -> hx at the center is +/- 45 nm.",
+  "n_holes_total": 41,
+  "center": "hole on the beam center (odd count, symmetric)",
+  "per_side": "center hole + ~10 taper cells + ~10 mirror cells (pitch back to 650 nm by hole 9-10)",
+  "pitch_nm_from_center_outward": [536, 539, 544, 559, 573, 592, 602, 615, 631, 646, 641],
+  "hy_nm_hole_0_to_10": [208, 227, 272, 294, 326, 374, 439, 487, 544, 578, 623],
+  "hx_nm_center_approx": 400,
+  "chan_taper_fit": {"formula": "a(x)/a_m = 1 - d (2y^3 - 3y^2 + 1), y = eta-remap of x = j/M", "d": 0.177, "M": 11.65, "eta": 1.05, "rms": 0.005},
+  "derived_start_values": {"d": 0.18, "M": 10, "eta": 1.0, "xi": "6 (r0 = (hy/hx)_0/(hy/hx)_m ~ 0.30-0.34)", "chi": "3.5 (s0 = area ratio ~ 0.34-0.39)", "n_mirror_per_side": 10}
+}
