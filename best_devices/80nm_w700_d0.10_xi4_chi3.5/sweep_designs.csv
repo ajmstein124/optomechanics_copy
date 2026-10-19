@@ -1,0 +1,3 @@
+d,xi,chi,a_nm,optical_Q,breathing_GHz,localization,sidewall_ratio_S,min_feature_nm,fabricable,hybrid,meets_10GHz,rank
+0.1,4.0,3.5,182.8,3.25e+06,9.754,0.85,1.0,81.9,True,False,True,1
+0.13,4.0,3.5,187.1,2.25e+06,9.805,0.84,,80.9,True,False,True,2

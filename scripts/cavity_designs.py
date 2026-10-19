@@ -86,7 +86,7 @@ def designs(run_dir):
         t = (LAM0 - p1['lam']) / (p2['lam'] - p1['lam'])
         a = p1['cfg']['a_m'] + t * (p2['cfg']['a_m'] - p1['cfg']['a_m'])
         c = dict(p1['cfg'], a_m=a, hx_m=p1['cfg']['hx_m'] / p1['cfg']['a_m'] * a)
-        mf = min(min_features(layout(c['a_m'], c['hx_m'], c['hy_m'], c['M'], c['n_mirror'], d, c['eta'], xi, chi), c['w']).values())
+        mf = min(min_features(layout(c['a_m'], c['hx_m'], c['hy_m'], c['M'], c['n_mirror'], d, c['eta'], xi, chi, c.get('lock_x', False), c.get('profile')), c['w']).values())
         near = p1 if t < 0.5 else p2                     # breathing: nearer point if one side lacks it
         both = np.isfinite(p1['fb']) and np.isfinite(p2['fb'])
         fb = p1['fb'] + t * (p2['fb'] - p1['fb']) if both else near['fb']

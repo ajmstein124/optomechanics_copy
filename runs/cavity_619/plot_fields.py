@@ -84,7 +84,7 @@ def deformed(ax, z, lay, w):
     return tp
 
 
-fig, axes = plt.subplots(len(DEVS), 2, figsize=(15, 2.6 * len(DEVS) + 0.6))
+fig, axes = plt.subplots(len(DEVS), 2, figsize=(15, 2.6 * len(DEVS) + 0.6), squeeze=False)
 for r, (dev, title) in enumerate(DEVS):
     fn = D / f'fields_{dev}.npz'
     if not fn.exists():
@@ -93,10 +93,10 @@ for r, (dev, title) in enumerate(DEVS):
         continue
     z = np.load(fn)
     c = json.loads(str(z['cfg']))
-    lay = layout(c['a_m'], c['hx_m'], c['hy_m'], c['M'], c['n_mirror'], c['d'], c['eta'], c['xi'], c['chi'])
+    lay = layout(c['a_m'], c['hx_m'], c['hy_m'], c['M'], c['n_mirror'], c['d'], c['eta'], c['xi'], c['chi'], c.get('lock_x', False), c.get('profile'))
     w = c['w']
     lam = 299792.458 / (float(z['f_opt']) / 1e12)
-    head = f"{title}: w {c['w']:g}, a {c['a_m']:.1f}, d {c['d']}, ξ {c['xi']:g}, χ {c['chi']:g}"
+    head = (f"{title}: " if title else '') + f"w {c['w']:g}, a {c['a_m']:.1f}, d {c['d']}, ξ {c['xi']:g}, χ {c['chi']:g}"
 
     # optics: real(Ey), odd in x, even in y
     X, Y, V = unfold(z['opt_xyz'], z['opt_val'][:, 0], -1, 1)

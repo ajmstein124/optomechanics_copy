@@ -26,6 +26,7 @@ import sys
 import time
 
 import mph
+import numpy as np
 from cavity_taper import layout, beam_half_length
 
 
@@ -49,8 +50,8 @@ def build(cfg, name='cavity'):
     """cfg: dict with numbers in nm unless noted:
     a_m, w, t, hx_m, hy_m, M, n_mirror, d, eta, xi, chi, pad_x, pad_y, pad_z, d_pml, h_beam (expr),
     h_air (expr), E_d, nu_d, rho_d, n_d (strings with units / plain), f_mech, f_op (strings), N_mode, N_op."""
-    lay = layout(cfg['a_m'], cfg['hx_m'], cfg['hy_m'], cfg['M'], cfg['n_mirror'], cfg['d'],
-                 cfg['eta'], cfg['xi'], cfg['chi'])
+    lay = perturb(layout(cfg['a_m'], cfg['hx_m'], cfg['hy_m'], cfg['M'], cfg['n_mirror'], cfg['d'],
+                 cfg['eta'], cfg['xi'], cfg['chi'], cfg.get('lock_x', False), cfg.get('profile')), cfg)
     X_in = beam_half_length(lay, cfg['pad_x'])
     nh = len(lay['x'])
 
@@ -68,59 +69,92 @@ def build(cfg, name='cavity'):
     for k in ('E_d', 'nu_d', 'rho_d', 'n_d', 'f_mech', 'f_op', 'N_mode', 'N_op', 'h_beam', 'h_air'):
         P.set(k, str(cfg[k]))
     P.set('tol', '1[nm]', 'selection tolerance')
+    full = cfg.get('swa') is not None          # sidewall angle (deg) -> full-thickness 1/4 model (no z0 symmetry), 2026-10-18
+    P.set('swa', f"{float(cfg.get('swa') or 0)}[deg]", 'sidewall angle from vertical (mask = top surface; holes narrow, beam flares toward the bottom)')
+    P.set('dsw', 't*tan(swa)', 'lateral sidewall offset over the full thickness, per side')
+    P.set('w_bot', 'w+2*dsw', 'beam width at the bottom surface')
+    P.set('symf', '4' if full else '8', 'symmetry multiplicity of the modeled region (meff normalization)')
     for j in range(nh):
         P.set(f'x{j}', f"{lay['x'][j]:.3f}[nm]", f'hole {j} center')
         P.set(f'hx{j}', f"{lay['hx'][j]:.3f}[nm]", f'hole {j} full x axis')
         P.set(f'hy{j}', f"{lay['hy'][j]:.3f}[nm]", f'hole {j} full y axis')
+        P.set(f'hxb{j}', f'max(hx{j}-2*dsw, 1[nm])', f'hole {j} x axis at the bottom surface')
+        P.set(f'hyb{j}', f'max(hy{j}-2*dsw, 1[nm])', f'hole {j} y axis at the bottom surface')
 
     m.component().create('comp1', True)
     comp = m.component('comp1')
     geom = comp.geom().create('geom1', 3)
     geom.lengthUnit('nm')
-    beam = geom.create('blk_beam', 'Block'); beam.label('beam (1/8)')
-    beam.set('size', ['X_in+d_pml', 'w/2', 't/2']); beam.set('pos', ['0', '0', '0'])
+    if not full:
+        beam = geom.create('blk_beam', 'Block'); beam.label('beam (1/8)')
+        beam.set('size', ['X_in+d_pml', 'w/2', 't/2']); beam.set('pos', ['0', '0', '0'])
+    else:                                       # trapezoidal beam: rectangle at the bottom (w_bot), scaled to w at the top
+        wpb = geom.create('wpb', 'WorkPlane'); wpb.label('beam bottom plane'); wpb.set('quickplane', 'xy'); wpb.set('quickz', '-t/2')
+        r = wpb.geom().create('r1', 'Rectangle'); r.set('size', ['X_in+d_pml', 'w_bot/2']); r.set('pos', ['0', '0'])
+        beam = geom.create('blk_beam', 'Extrude'); beam.label('beam (1/4, sloped sidewalls)')
+        beam.set('workplane', 'wpb'); beam.selection('input').set(['wpb'])
+        beam.setIndex('distance', 't', 0); beam.set('scale', [['1', 'w/w_bot']])
     air = geom.create('blk_air', 'Block'); air.label('air box + PML layers')
-    air.set('size', ['X_in+d_pml', 'w/2+pad_y+d_pml', 't/2+pad_z+d_pml']); air.set('pos', ['0', '0', '0'])
+    if not full:
+        air.set('size', ['X_in+d_pml', 'w/2+pad_y+d_pml', 't/2+pad_z+d_pml']); air.set('pos', ['0', '0', '0'])
+    else:
+        air.set('size', ['X_in+d_pml', 'w/2+pad_y+d_pml', 't+2*(pad_z+d_pml)']); air.set('pos', ['0', '0', '-(t/2+pad_z+d_pml)'])
     air.set('layername', ['PML']); air.setIndex('layer', 'd_pml', 0)
     for side, on in (('layerleft', False), ('layerright', True), ('layerfront', False),
-                     ('layerback', True), ('layerbottom', False), ('layertop', True)):
+                     ('layerback', True), ('layerbottom', full), ('layertop', True)):
         air.set(side, on)
-    wp = geom.create('wp1', 'WorkPlane'); wp.label('holes work plane (z=0)')
-    wp.set('quickplane', 'xy')
-    for j in range(nh):
-        el = wp.geom().create(f'e{j}', 'Ellipse'); el.label(f'hole {j}')
-        el.set('semiaxes', [f'hx{j}/2', f'hy{j}/2']); el.set('pos', [f'x{j}', '0'])
-    ext = geom.create('ext_holes', 'Extrude'); ext.label('hole cylinders')
-    ext.set('workplane', 'wp1'); ext.selection('input').set(['wp1'])
-    ext.setIndex('distance', 't/2', 0)
+    if not full:
+        wp = geom.create('wp1', 'WorkPlane'); wp.label('holes work plane (z=0)')
+        wp.set('quickplane', 'xy')
+        for j in range(nh):
+            el = wp.geom().create(f'e{j}', 'Ellipse'); el.label(f'hole {j}')
+            el.set('semiaxes', [f'hx{j}/2', f'hy{j}/2']); el.set('pos', [f'x{j}', '0'])
+        ext = geom.create('ext_holes', 'Extrude'); ext.label('hole cylinders')
+        ext.set('workplane', 'wp1'); ext.selection('input').set(['wp1'])
+        ext.setIndex('distance', 't/2', 0)
+        holes = ['ext_holes']
+    else:                                       # tapered elliptic holes: ellipse at the origin on the bottom plane, scaled to the top, moved
+        holes = []
+        for j in range(nh):
+            wpj = geom.create(f'wph{j}', 'WorkPlane'); wpj.set('quickplane', 'xy'); wpj.set('quickz', '-t/2-1[nm]')
+            el = wpj.geom().create('e', 'Ellipse'); el.set('semiaxes', [f'hxb{j}/2', f'hyb{j}/2']); el.set('pos', ['0', '0'])
+            ex = geom.create(f'exh{j}', 'Extrude'); ex.set('workplane', f'wph{j}'); ex.selection('input').set([f'wph{j}'])
+            ex.setIndex('distance', 't+2[nm]', 0)
+            ex.set('scale', [[f'(hxb{j}+2*dsw*(t+2[nm])/t)/hxb{j}', f'(hyb{j}+2*dsw*(t+2[nm])/t)/hyb{j}']])
+            mv = geom.create(f'mvh{j}', 'Move'); mv.selection('input').set([f'exh{j}']); mv.set('displx', f'x{j}')
+            holes.append(f'mvh{j}')
     dif = geom.create('dif_holes', 'Difference'); dif.label('beam minus holes')
-    dif.selection('input').set(['blk_beam']); dif.selection('input2').set(['ext_holes'])
+    dif.selection('input').set(['blk_beam']); dif.selection('input2').set(holes)
     t0 = time.time()
     geom.run('fin')
     p(f'geometry: {nh} holes on the half beam (hole 0 = center), X_in = {X_in:.0f} nm; '
       f'{int(geom.getNDomains())} domains, {int(geom.getNBoundaries())} boundaries ({time.time()-t0:.1f} s)')
 
     T = '(-tol)'
+    Zb = '(-t/2-tol)' if full else T                      # bottom of the beam in z
+    Za = '(-(t/2+pad_z+d_pml)-tol)' if full else T        # bottom of the air box
+    Wb = 'w_bot/2+tol' if full else 'w/2+tol'
     Ytop, Ztop = 'w/2+pad_y+d_pml+tol', 't/2+pad_z+d_pml+tol'
-    _box(comp, 'sel_beam_all', 3, (T, 'X_in+d_pml+tol'), (T, 'w/2+tol'), (T, 't/2+tol'), 'beam domains (incl. PML part)')
-    _box(comp, 'sel_beam', 3, (T, 'X_in+tol'), (T, 'w/2+tol'), (T, 't/2+tol'), 'beam domains (inside X_in)')
+    _box(comp, 'sel_beam_all', 3, (T, 'X_in+d_pml+tol'), (T, Wb), (Zb, 't/2+tol'), 'beam domains (incl. PML part)')
+    _box(comp, 'sel_beam', 3, (T, 'X_in+tol'), (T, Wb), (Zb, 't/2+tol'), 'beam domains (inside X_in)')
     a_ = comp.selection().create('sel_air', 'Complement'); a_.label('air domains')
     a_.set('entitydim', '3'); a_.set('input', ['sel_beam_all'])
-    _box(comp, 'sel_inner', 3, (T, 'X_in+tol'), (T, 'w/2+pad_y+tol'), (T, 't/2+pad_z+tol'), 'inner region (no PML)')
+    _box(comp, 'sel_inner', 3, (T, 'X_in+tol'), (T, 'w/2+pad_y+tol'), ('(-(t/2+pad_z)-tol)' if full else T, 't/2+pad_z+tol'), 'inner region (no PML)')
     pm = comp.selection().create('sel_pml', 'Complement'); pm.label('PML domains')
     pm.set('entitydim', '3'); pm.set('input', ['sel_inner'])
     adj = comp.selection().create('sel_beam_bnd', 'Adjacent'); adj.label('beam boundaries')
     adj.set('input', ['sel_beam']); adj.set('outputdim', '2')
-    planes = {'x0': ((T, 'tol'), (T, Ytop), (T, Ztop)),
-              'y0': ((T, 'X_in+d_pml+tol'), (T, 'tol'), (T, Ztop)),
+    planes = {'x0': ((T, 'tol'), (T, Ytop), (Za, Ztop)),
+              'y0': ((T, 'X_in+d_pml+tol'), (T, 'tol'), (Za, Ztop)),
               'z0': ((T, 'X_in+d_pml+tol'), (T, Ytop), (T, 'tol'))}
+    if full:
+        planes.pop('z0')
     for pl, box in planes.items():
         _box(comp, f'sel_{pl}_all', 2, *box, f'whole {pl[0]}=0 plane')
         it = comp.selection().create(f'sel_{pl}_beam', 'Intersection'); it.label(f'beam faces {pl[0]}=0')
         it.set('entitydim', '2'); it.set('input', [f'sel_{pl}_all', 'sel_beam_bnd'])
-    _box(comp, 'sel_end', 2, ('X_in-tol', 'X_in+tol'), (T, 'w/2+tol'), (T, 't/2+tol'), 'beam end face x=X_in')
-    for t in ('sel_beam_all', 'sel_beam', 'sel_air', 'sel_pml', 'sel_x0_beam', 'sel_y0_beam', 'sel_z0_beam',
-              'sel_x0_all', 'sel_end'):
+    _box(comp, 'sel_end', 2, ('X_in-tol', 'X_in+tol'), (T, Wb), (Zb, 't/2+tol'), 'beam end face x=X_in')
+    for t in ('sel_beam_all', 'sel_beam', 'sel_air', 'sel_pml', 'sel_x0_beam', 'sel_y0_beam', 'sel_x0_all', 'sel_end') + (() if full else ('sel_z0_beam',)):
         p(f'  selection {t}: {len(comp.selection(t).entities())} entities')
 
     mat = comp.material().create('mat1', 'Common'); mat.label('Diamond (isotropic)')
@@ -141,7 +175,7 @@ def build(cfg, name='cavity'):
 
     solid = comp.physics().create('solid', 'SolidMechanics', 'geom1')
     solid.selection().named('sel_beam')
-    for pl in ('x0', 'y0', 'z0'):
+    for pl in ('x0', 'y0') + (() if full else ('z0',)):
         sy = solid.create(f'sym_{pl}', 'SymmetrySolid', 2); sy.label(f'Symmetry {pl}')
         sy.selection().named(f'sel_{pl}_beam')
         an = solid.create(f'as_{pl}', 'Antisymmetry', 2); an.label(f'Antisymmetry {pl}')
@@ -151,7 +185,7 @@ def build(cfg, name='cavity'):
     p('solid features: ' + ', '.join(str(t) for t in solid.feature().tags()))
 
     ew = comp.physics().create('ewfd', 'ElectromagneticWavesFrequencyDomain', 'geom1')
-    for pl in ('x0', 'y0', 'z0'):
+    for pl in ('x0', 'y0') + (() if full else ('z0',)):
         pe = ew.create(f'pec_{pl}', 'PerfectElectricConductor', 2); pe.label(f'PEC {pl} plane')
         pe.selection().named(f'sel_{pl}_all')
         pc = ew.create(f'pmc_{pl}', 'PerfectMagneticConductor', 2); pc.label(f'PMC {pl} plane')
@@ -186,33 +220,57 @@ def build(cfg, name='cavity'):
 
 def op_class(model, x='PEC', y='PEC', z='PMC'):
     ew = model.java.component('comp1').physics('ewfd')
+    tags = [str(t) for t in ew.feature().tags()]
     for pl, kind in (('x0', x), ('y0', y), ('z0', z)):
+        if f'pec_{pl}' not in tags:              # full-thickness (sidewall-angle) model has no z0 plane
+            continue
         ew.feature(f'pec_{pl}').active(kind == 'PEC')
         ew.feature(f'pmc_{pl}').active(kind == 'PMC')
 
 
 def mech_class(model, x='+', y='+', z='+'):
     solid = model.java.component('comp1').physics('solid')
+    tags = [str(t) for t in solid.feature().tags()]
     for pl, c in (('x0', x), ('y0', y), ('z0', z)):
+        if f'sym_{pl}' not in tags:
+            continue
         solid.feature(f'sym_{pl}').active(c == '+')
         solid.feature(f'as_{pl}').active(c == '-')
 
+
+
+def perturb(lay, cfg):
+    """Optional fabrication disorder (2026-10-17): cfg['dis'] = dict(seed, s_hx, s_hy, s_x) in nm -> Gaussian per-hole changes of
+    hx, hy and hole-center position (hole 0 keeps x = 0). Symmetric about the model's symmetry planes (1/8 model)."""
+    dis = cfg.get('dis')
+    if not dis:
+        return lay
+    rng = np.random.default_rng(int(dis['seed']))
+    n = len(lay['x'])
+    lay = dict(lay)
+    lay['hx'] = lay['hx'] + rng.normal(0, dis.get('s_hx', 0.0), n)
+    lay['hy'] = lay['hy'] + rng.normal(0, dis.get('s_hy', 0.0), n)
+    dx = rng.normal(0, dis.get('s_x', 0.0), n); dx[0] = 0.0
+    lay['x'] = lay['x'] + dx
+    return lay
 
 def set_layout(model, cfg):
     """Re-layout an existing cavity model for new (a_m, hx_m, hy_m, d, ...) with the SAME hole count
     (M + n_mirror unchanged): updates the hole parameters and X_in, rebuilds geometry and mesh.
     Returns the layout dict."""
-    lay = layout(cfg['a_m'], cfg['hx_m'], cfg['hy_m'], cfg['M'], cfg['n_mirror'], cfg['d'],
-                 cfg['eta'], cfg['xi'], cfg['chi'])
+    lay = perturb(layout(cfg['a_m'], cfg['hx_m'], cfg['hy_m'], cfg['M'], cfg['n_mirror'], cfg['d'],
+                 cfg['eta'], cfg['xi'], cfg['chi'], cfg.get('lock_x', False), cfg.get('profile')), cfg)
     m = model.java
     P = m.param()
     nh = len(lay['x'])
     if int(round(float(P.evaluate('M')))) + int(round(float(P.evaluate('n_mirror')))) + 1 != nh:
         raise ValueError('hole count changed; rebuild the model instead')
-    for k in ('a_m', 'hx_m', 'hy_m'):
+    for k in ('a_m', 'hx_m', 'hy_m', 'w'):                 # w too (2026-10-16): one model serves any beam width
         P.set(k, f"{cfg[k]}[nm]")
     for k in ('d', 'eta', 'xi', 'chi'):
         P.set(k, str(cfg[k]))
+    if cfg.get('swa') is not None:
+        P.set('swa', f"{float(cfg['swa'])}[deg]")
     P.set('X_in', f'{beam_half_length(lay, cfg["pad_x"]):.3f}[nm]')
     for j in range(nh):
         P.set(f'x{j}', f"{lay['x'][j]:.3f}[nm]")

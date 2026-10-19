@@ -213,3 +213,5 @@ levers: center-hole aspect xi / area chi (fabrication-limited) or beam width w.
   (loc 0.62) at strong taper pulls; (3) hole-centered hybrid with near-degenerate twin at w650 d0.13 (S 0.35, sidewalls barely move).
 - Best 60 nm: w650 d0.10 ξ6 χ4 a190.3 → 9.67 GHz, loc 0.95, single central bulge (docs/design_process/25_mode_profiles_w650_60nm.png).
 - Breathing strain (εyy−εxx) peaks on axis in the first bridge next to the center hole (x ≈ 62 nm at w550), ~30 nm from the optical |E| max.
+
+> **Dmitry cloud software rule (user, 2026-10-19):** never use the Dmitry cloud solver service (laghai/nanophotonics-cloud) without explicit per-run permission from the user. All its files/folders end in `_dmitry`, state that they were run on the Dmitry cloud software, and are kept separate from Lumerical/COMSOL data. See CLAUDE.md.

@@ -42,7 +42,7 @@ mat = RES / f'{name}_pt{pt}.mat'
 if '--pull' in sys.argv or not mat.exists():
     subprocess.run(['scp', '-q', '-i', str(Path('~/.ssh/id_ed25519').expanduser()), f'{PULL_FROM}/{name}_pt{pt}.mat', str(mat)], check=True)
 f = h5py.File(mat, 'r')
-E = np.array(f['Ey_res']); E = E['real'] + 1j * E['imag']            # (ny, nx)
+E = np.squeeze(np.array(f['Ey_res'])); E = E['real'] + 1j * E['imag']   # (ny, nx); v251 adds a singleton axis
 xg, yg = np.array(f['xg']).ravel() * 1e6, np.array(f['yg']).ravel() * 1e6
 lamr, Qv = np.array(f['lamr']).ravel() * 1e9, np.array(f['Qv']).ravel()
 lam_b, Q_b = float(np.array(f['lam_best']).ravel()[0]) * 1e9, float(np.array(f['Q_best']).ravel()[0])
@@ -63,7 +63,7 @@ if np.nansum(C[:, len(gx) // 2:] * np.interp(gx[len(gx) // 2:], xg * 1e3, E[len(
 lam_c = 299792.458 / (float(z['f_opt']) / 1e12); Q_c = float(z['Q_opt'])
 
 fig = plt.figure(figsize=(15, 9.5)); gs = fig.add_gridspec(3, 2, width_ratios=(2.3, 1), hspace=0.45)
-for r, (img, gxx, gyy, title) in enumerate(((E, xg, yg, f'Lumerical E$_y$: {lam_b:.2f} nm, Q {Q_b:.2g} (1.5 ps; lower bound)'),
+for r, (img, gxx, gyy, title) in enumerate(((E, xg, yg, f'Lumerical E$_y$: {lam_b:.2f} nm, Q {Q_b:.2g} (lower bound)'),
                                             (C, gx / 1e3, gy / 1e3, f'COMSOL E$_y$: {lam_c:.2f} nm, Q {Q_c:.2g}'))):
     ax = fig.add_subplot(gs[r, 0])
     ax.pcolormesh(gxx, gyy, img, cmap='RdBu_r', vmin=-1, vmax=1, shading='auto')

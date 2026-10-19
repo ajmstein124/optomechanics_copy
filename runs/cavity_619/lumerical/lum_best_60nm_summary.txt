@@ -1,0 +1,2 @@
+point a_nm d xi chi lambda_nm Q n_res
+1 190.3 0.1 6 4 618.766 1.10659e+07 3

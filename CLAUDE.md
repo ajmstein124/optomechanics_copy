@@ -4,6 +4,21 @@ This is the top-level agent context file. All sub-agent files are registered her
 
 ---
 
+## DMITRY CLOUD SOFTWARE — HARD RULE (user, 2026-10-19)
+
+The "Dmitry cloud software/service" = the laghai/nanophotonics-cloud solver service (GitHub laghai/nanophotonics-cloud; billed, $50/month cap,
+account <ACCOUNT>). **NEVER use it unless the user explicitly says to, for a specific named run.** No exploratory, follow-up,
+"quick check" or automatic runs. Permission for one run does not extend to any other run.
+- Every file and folder produced by or for a Dmitry-service run must END WITH `_dmitry` (e.g. `runs/dmitry/batch41_dmitry/`, `results_dmitry.csv`),
+  and its contents/metadata must state that the run was done on the Dmitry cloud software.
+- Keep Dmitry data in separate folders, never mixed with Lumerical or COMSOL data or catalogs; never merge it into BO datasets, best_devices,
+  results_summary tables etc. without labeling it as Dmitry-service data.
+- State the price before any run (the service quotes it) and stay within the user's explicit authorization.
+- Authorized so far: ONLY BO batch 41 (60 nm min feature, 5° sidewall; 4 points from runs/surrogate_explore/batch_41.json), 2026-10-19.
+- Status 10/19: the service cannot run batch 41 yet (no cavity resonance task; elastic solver is unit-cell only). User declined an
+  optics-only job-lane workaround; instead asked the Dmitry team (GitHub issue on their repo) to build what we use COMSOL for.
+  Nothing has been submitted. gcloud installed at ~/google-cloud-sdk (user logs in with `gcloud auth login <account>`).
+
 ## Project Overview
 
 **Project:** Co-designed photonic/phononic crystal structures for SnV cavity QED  
@@ -94,7 +109,9 @@ So shield and bath suppression are the same gap here. Open with user/collaborato
 2b. **Infra (user action needed):** fix abby's profile path (`C:\Users\abby\comsol\fix_abby_profile.ps1`, run with no abby session open) and Windows Update active hours / restart policy so overnight sweeps aren't rebooted. Disable Tailscale key expiry for jv-adamantoise in the admin console.
 3. Optical (OP) study for diamond at 619 nm: confirm refractive-index node in GUI before overriding (n=2.41, f_op ≈ 484 THz).
 4. Resume Si d×w sweep (5/9 combos remaining): `runs/si_dw_sweep/sweep_resume.py`
-5. Offered (not started): Q_m of the finals with a mechanical PML / support / cross shield; strain tensor at candidate SnV sites in final_60nm.mph
+5. **Best-device checks list: `best_devices/CHECKS.md`** (user 10/16; new sims OK): exact 3D mode volume + Q/V, breathing-mode STRAIN
+   profile (not only displacement), physical Q_m (mech PML/shield), optical Q convergence, g0 fix, disorder.
+   Previously offered (not started): Q_m of the finals with a mechanical PML / support / cross shield; strain tensor at candidate SnV sites in final_60nm.mph
    (replaces the ε_zpf / g_e guesses below); literature search (emitter-driven mechanical sideband cooling; driven sidebands of group-IV centers in GHz OMC modes).
 
 **Stage 2 (not started):**
@@ -199,6 +216,8 @@ Python: `C:\Program Files\ANSYS Inc\v252\Lumerical\python-3.13.1\python.exe`
 
 ## 1D nanobeam OMC track (2026-10-14) — Oh 2026 approach, 619 nm optical + <=10 GHz breathing mode
 
+**Results tracker:** `results_summary.md` (project root, user 10/16) — best devices + learnings + running jobs; sim results only (no physics discussion), concise. **Update it whenever a run finishes or a best device changes.**
+
 **Summary PDF:** `docs/nanobeam_1d_summary.pdf` (generator `docs/make_nanobeam_summary.py`; re-run as data lands).
 
 **Steps and status**
@@ -232,8 +251,29 @@ Python: `C:\Program Files\ANSYS Inc\v252\Lumerical\python-3.13.1\python.exe`
      Optical Q is NOT hurt by w 650 (3e7 at d .13). d 0.13/a 194 (Q 3e7, 9.82 GHz) is a hole-centered **hybrid** (S 0.35) → rejected.
    - w600 / 60 nm: 10.5–10.9 GHz, best d .10/ξ8/χ5 a 190.6 Q 5.3e5 10.52 GHz → w650 wins.
    - w650 / 80 nm: no fabricable shape beyond the base (619 nm needs a 184–193); best base d .10 a 183.8: Q 5.7e6, 10.53 GHz (loc .85).
-   - w600 / 80 nm: running 10/15 afternoon. **w700 / 80 nm queued** (`run_w700.py`, user yes): mirror check (optics both y-parities +
-     Y+Z+ bands at a 180), d .07/.10/.13, then re-runs deliverables + fsp builds.
+   - w600 / 80 nm: best base d .10 a 185.0, Q 7.5e6, 11.47 GHz.
+   - **w700 / 80 nm: BEST 80 nm DEVICE = d 0.10, ξ 4, χ 3.5, a 182.8: 619.29 nm, Q 3.4e6, breathing 9.73 GHz (loc 0.86), 82 nm** (final_80nm.json, 10/15 16:45).
+   - **Why 80 nm Q is lower (10/16 analysis):** same base shape, d .13: cell B (.45/.70) Q ~3e6 vs 3e7 for the 60 nm cell (.53/.77) → smaller holes =
+     weaker mirror; plus only the base taper is fabricable (best 60 nm uses ξ6/χ4). Binding 80 nm feature = center BRIDGES (ξ stretches center holes
+     in x), NOT rails: at w700 hy/w can rise to .77 (rail 80.5) for free. Improvement idea (not run): w700 80 nm cell hx/a .45–.48, hy/w .74–.77 →
+     mirror check + bracket + shapes (d .10 ξ4 χ4/4.5 fabricable); test n_mirror 15. ~2–3 h COMSOL. fsp_builds crashed on the 80 nm .fsp (lumapi
+     'Session is already closed'); COMSOL idle since 10/15 17:06.
+   - **run_w700_cells.py DONE 10/16 16:50 (49 min):** taller holes did NOT help. C1 (.45/.77): mirror gap 457–562 THz (wider than B 466–556) but
+     cavity Q 2–4.5e6 and breathing **10.19 GHz** (B: 9.73) → fails ≤10; 619 line a 183.7 (d .10) / 188.1 (d .13); 0 fabricable shapes.
+     C2 (.48/.77): cannot reach 619 nm at 80 nm (a ≥ 189 needed for bridges → 628+ nm); breathing 10.0. **n_mirror 15** on the B final:
+     Q 3.4e6 → **6.8e6** (in-plane mirror leakage matters) but breathing ID failed (only 10.22 GHz loc .72 listed; 9.73 mode likely outside the
+     60-mode window on the longer beam — re-check with a wider window before trusting). diamond_a_large **TABLED** (user 10/16): remote launcher
+     renamed diamond_a_large__sweep.py.tabled (rename back to resume).
+   - **RUNNING (10/16 16:58): `run_w700_lockx.py`** — lock_x taper (cavity_taper.layout lock_x=True: hx_j = (hx/a)_m · a_j; ≈ Chan family on χ = ξ+2),
+     w700, mirror hx/a .50, hy/w .77 (feasibility: base bridge 83 nm, 40/48 shapes ≥ 80 nm vs 4 normally); mirror check a 188, d .10/.13/.16 bracket,
+     ≤ 10 shapes → `runs/cavity_619_width/w700_mf80_LX/data`. lock_x is carried via cfg['lock_x'] (layout, build_cavity_model, cavity_designs,
+     cavity_pipeline, plot_fields). Not yet in deliverables/PIPES.
+     **DONE 22:49:** base shape only (bug: shapes bracket at a0 − 8 → center holes < 80 nm under lock_x → 0 shapes). 619 line a 184.3/188.3/192.5
+     for d .10/.13/.16; Q ~2.9e6/3.3e6/1.3e6; breathing 10.04–10.07 GHz. **RUNNING 22:55: `run_w700_lockx_shapes.py`** (da = −6 → bracket upward;
+     5 (ξ,χ) × d .10/.13). Pipeline.shapes accepts negative da for upward brackets.
+   - **Result summaries: `best_devices/`** (`python best_devices/make_best_devices.py`, 10/16): per final device summary.md, modes, spectra, mirror bands, sweeps.
+     Finding: in BOTH finals the breathing mode sits ABOVE the mirror cell's Y+Z+ quasi-gap (5.21–8.77 GHz at w650/a190.3; 5.47–9.01 at w700/a182.8),
+     overlapping the 2nd Y+Z+ band -> not gap-protected; Q_m (mech PML) is the open question.
 9. **Breathing-mode identification** (all three needed; `cavity_pipeline.breathing_index`, `scripts/cavity_designs.py`): localization ≥ 0.8;
    sidewall coherence B > 0.5 (in-phase sidewalls); **sidewall amplitude ratio S = max sidewall |v| / max |u| ≥ 0.7** (B is amplitude-blind;
    clean breathing S = 1.0, the w650 d.13 hybrid 0.35). S is computed in every new solve (`cavity_eval.sidewall_ratio`, `max_side` operator) and
@@ -261,8 +301,33 @@ Python: `C:\Program Files\ANSYS Inc\v252\Lumerical\python-3.13.1\python.exe`
    guards with haveresult(); resumed 10/16 10:45 (`run_sweeps.py lum_ad_mf60:8:50 lum_shape_mf60`, log run_sweeps_log2.txt), then the SiC project's screens.
    .fsp files on jv-adamantoise: `C:\Users\abby\lumerical\` (moved out of comsol\ by user); best 60 nm: lum_w650_mf60_best_check.fsp.
 
+13. **Surrogate-guided search** (`runs/surrogate_explore`, user 10/16 night: "experiment independently"; method from Roman's guide + pccsim
+   `strip_pcw_bayes`): `dataset.py` (all solved points → data/points.csv) → `propose.py --mf 80 --batch N [--M 10,14 --nm 10,15 --n-feas k --hypothesis Q]`
+   (GPs: λ/a Matern52 ARD, log Q Matern32 ARD, breathing Matern52 shared on clean modes; a solved from λ/a; exact min feature; cEI × P(fb ≤ 9.95))
+   → `launch_batch.py N` (remote `eval_batch.py`, one model per (M, n_mirror), set_layout now updates w) → `collect.py` (bo_results.csv, pred vs obs)
+   → `plot_progress.py`. Pipeline now saves `loc_mech3` (x < 3 µm) + `clamp_frac` (last 500 nm): broad gentle-taper modes score 0.6–0.75 at 1.5 µm
+   but 0.9–0.99 at 3 µm → **clean breathing = loc ≥ 0.8 OR loc3 ≥ 0.9**. Pipeline takes M= and n_mirror=; layout takes profile= (explicit a_j/a_m).
+   **Results:** bo2_0 (M10, w713 hx/a .504 hy/w .765 d .135 ξ2.1 χ3.55 a189.6) 619.32 nm Q 2.15e7 9.84 GHz (80 nm); **M14 gives Q 4.5–6.5e8**
+   (bo2_5 w702 hx/a .477 hy/w .754 d .110 ξ3.8 χ3.2: 9.50 GHz but at 633 nm — needs a rescale + 80 nm recheck). Batch 3 (M 12/14/16) running 10/17 08:40.
+14. **Physics proxies:** legume optical unit cells via pccsim `nanobeam()` (worktree ~/Documents/pccsim_main, `uv sync --no-install-package netcdf4`;
+   `runs/legume_proxy/nb_pccsim.py`, calibration cal_band{1,2}.npy vs 72 COMSOL cells: 1.0 / 0.4 nm). Q tracks taper smoothness (max band-edge jump,
+   r = −0.66), not mirror-strength linearity. COMSOL unit-cell mech proxy (`runs/surrogate_explore/unitcell_proxy.py`, 20 s/cell): cavity breathing =
+   center-cell Γ breathing band − 0.23 GHz (rms 0.24); center-cell f ∝ w^−1.4 a^−0.2 rail^0.25 bridge^0.4 → width is the 80 nm lever.
+   Mac has 16 GB and swaps heavily (other apps); legume ran ~10× slower under contention.
+15. **Sidewall angle** (user 10/18: BO for 60/80 nm × 5/10/15°): `cfg['swa']` (deg) → full-thickness 1/4 model (no z0 plane; sloped
+   beam via Extrude scale, tapered holes = per-hole WP ellipse at the bottom + Extrude scale + Move). Mask = top; hxb = hx − 2t·tanθ;
+   feasibility adds bottom opening ≥ 20 nm. Pipeline(swa=...) (N_mode 100, N_op 30), symf 4/8 param for meff. Validated at 0°. bo2_0 mask:
+   5° → 626.9 nm Q 7.3e6 10.04 GHz; 10° → 633.0 nm Q 1.2e6 10.22 GHz (loc .57). Streams: `runs/surrogate_explore/stream.py <name> <batches>`
+   (one remote job + log per stream; model name per batch; stream.py now ALSO uploads eval_batch.py).
+   **BUG 10/19:** batches 11/12/14/21/22/24 ran a STALE remote eval_batch.py (from batch 4) → solved in the 1/8 VERTICAL-wall model despite
+   cfg['swa']; relabeled as swa-0 data (cfg 'swa' removed, why += '[solved vertical]'; pushed back to remote). Check logs show '_full' labels.
+   Corrected angled batches 10/19 03:30: 31 (80 nm, 5°), 32 (80, 10°), 41 (60, 5°), 42 (60, 10°); 15° next (33, 43). Valid angled data so far:
+   validation bo0_1 (5°), bo0_2 (10°). Full solves ~25–30 min with several jobs sharing the machine.
+   **Memory: ONE full-thickness (sidewall) model at a time** on jv-adamantoise (95 GB visible; 2 at once → 'Failed to assemble the matrices'
+   (out of memory) or a multi-hour thrash in the optical eigensolve, 10/19). Run all angled batches as ONE chained stream (stream.py SEQ 32 41 31 42).
+   g0 is now evaluated only for breathing-like modes (loc > 0.8 AND B > 0.5).
 **Min feature:** 60 nm (user) and 80 nm, one final device each. 80 nm cell hy/w .70 (rails ≥ 82 nm); taper freedom at 80 nm shrinks with a.
-**Figures:** g0 kept OUT of figures (user); label results "me" (not "Abby", not "ours"); few words, American spelling.
+**Figures:** g0 kept OUT of figures (user); NO "me"/"Abby"/"ours" labels on own results, EXCEPT figures that directly compare with Oh (Hyunseok) 2026, where own results are labeled "me" (user 10/16); few words, American spelling. plot_fields.py: pass `dev=` (empty title) for no prefix.
 **Ideas pending (user):** even-hole (bridge-centered) cavity so optical and breathing-strain maxima coincide at x = 0 (now both peak in the first
 bridge, ~30 nm apart, two sites at x ≈ ±95 nm): needs a layout option + x0 PMC optics; test on the w650 finalists. 140 nm thickness: answered
 qualitatively (slightly better optics, no help for mechanics, z-odd TE1 cutoff ~141 nm, harder etch) — not run.
@@ -297,7 +362,7 @@ files (and only runs/<last job>/data — use scp or make_all --pull for other ru
 - **Platform (user):** diamond membrane bonded to a Si carrier, devices undercut (suspended, air-clad). Si is not piezoelectric. Plan: DC electrostatic
   strain tuning of the emitter (doped carrier as electrode) + optical (radiation-pressure) GHz drive. Open questions to user: cryostat T, carrier doping,
   trench depth, metal before undercut, DC/RF lines.
-- **Public copy (user, 2026-10-16):** diamond-only public GitHub repo `optomechanics_copy` (Si files, journal PDFs omitted); see README there.
+- **Public copy (user, 2026-10-16; re-synced 10-19):** https://github.com/ajmstein124/optomechanics_copy (public). Must MIRROR this project minus the Si work (not the user's), journal PDFs (2 arXiv preprints kept) and infra details (redacted). Re-sync: `python scripts/make_public_copy.py <copy checkout> --commit "msg"` then push (script lists the exclusions/redactions, checks for leaks and >95 MB files, and excludes itself).
 
 ## Sub-Agents
 
@@ -455,6 +520,8 @@ Photonic-compatible a range under exploration: diamond_a_sweep (a=150–275 nm, 
 Material override: use the pattern in **Material Override Pattern** above. The old `'density'/'youngsmodulus'/'poissonsratio'` names silently do nothing.
 
 ## Infra Notes
+
+**GPU computer** (user's name; 2026-10-16): Tailscale host `<GPU_HOSTNAME>`, **<GPU_HOST>**, `ssh -i ~/.ssh/id_ed25519 <USER>@<GPU_HOST>` (key auth works; key in C:\ProgramData\ssh\administrators_authorized_keys, <USER> is admin). Windows 11, AMD Ryzen 9 9950X3D (16 cores), 126 GB RAM, RTX 5070 Ti 16 GB. Disk tight: C 19 GB, G/H 18 GB free. Installed: Ansys v251 incl. **Lumerical** (C:\Program Files\ANSYS Inc\v251\Lumerical; license/python not checked yet), Docker, WSL, Git, GitHub CLI, MS-MPI; NO COMSOL, NO real Python (only the WindowsApps stub; `py` absent). Also has a saved lab-tailnet profile (`<ACCOUNT>`); only one tailnet active at a time (`tailscale switch`). **Used for Lumerical verification** (v251 FDTD, GPU express mode, `lum_run.py --gpu`; work dir C:\Users\<USER>\Documents\optomechanics\lumerical; driver `best_devices/add_lumerical.py`).
 
 **Remote detached launch**: `Start-Process -WindowStyle Hidden` fails silently on this machine (0-byte logs). `wmic` not available (removed in newer Windows 11). **Use `Invoke-CimMethod Win32_Process Create`** — creates a process completely outside any job object, truly survives SSH disconnect. This is implemented in `remote_runner.py`'s default detach mode.
 

@@ -1,0 +1,20 @@
+{
+ "cell": {
+  "w": 650,
+  "t": 120,
+  "hx_a": 0.53,
+  "hy_w": 0.77
+ },
+ "points": [
+  {
+   "a": 190.3,
+   "d": 0.1,
+   "xi": 6.0,
+   "chi": 4.0,
+   "comsol_lam_nm": 619.503,
+   "comsol_Q": 17890793.185278498,
+   "label": "w650_mf60"
+  }
+ ],
+ "note": "Lumerical verification of the final 60nm device w650_mf60 (best_devices/): COMSOL 619.503 nm, Q 1.79e+07"
+}

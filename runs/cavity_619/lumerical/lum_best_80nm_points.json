@@ -1,0 +1,20 @@
+{
+ "cell": {
+  "w": 700,
+  "t": 120,
+  "hx_a": 0.45,
+  "hy_w": 0.7
+ },
+ "points": [
+  {
+   "a": 182.8,
+   "d": 0.1,
+   "xi": 4.0,
+   "chi": 3.5,
+   "comsol_lam_nm": 619.292,
+   "comsol_Q": 3391897.509010214,
+   "label": "w700_mf80"
+  }
+ ],
+ "note": "Lumerical verification of the final 80nm device w700_mf80 (best_devices/): COMSOL 619.292 nm, Q 3.39e+06"
+}

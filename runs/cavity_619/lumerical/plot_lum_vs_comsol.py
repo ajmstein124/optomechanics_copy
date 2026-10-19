@@ -8,7 +8,8 @@ it from the old PC DESKTOP-BBQLCD3, where the Lumerical sweeps run (runs/cavity_
                 interpolation in a (as scripts/cavity_designs.py); maps of Q at 619 nm and of the resonance at
                 COMSOL's 619 nm period (shows the solver offset directly)
   all           parity plots: Lumerical vs COMSOL resonance and Q per point
-Points Lumerical has not run yet are grey; works on partial sweeps.
+Points Lumerical has not run yet are grey; points whose COMSOL resonance is outside the Qanalysis window (570-680 nm)
+are 'out of window' (Lumerical returns a different mode there). Works on partial sweeps.
 Usage (from project root):
     python runs/cavity_619/lumerical/plot_lum_vs_comsol.py lum_ad_mf60 [--pull]
 Output: runs/cavity_619/lumerical/<name>_vs_comsol.png
@@ -28,6 +29,7 @@ KEY = str(Path('~/.ssh/id_ed25519').expanduser())
 # Lumerical runs happen on the old PC DESKTOP-BBQLCD3 (user 2026-10-15; never on the COMSOL machine)
 PULL_FROM = '<USER>@<LUMERICAL_HOST>:C:/Users/JVadmin/Documents/optomechanics/lumerical'
 LAM0 = 619.4
+WIN = (570.0, 680.0)   # Qanalysis search window of the .lsf files: resonances outside it are not found (junk mode instead)
 
 
 def load(name, pull):
@@ -45,6 +47,17 @@ def load(name, pull):
         q['lum_lam'], q['lum_Q'] = lum.get(i, (np.nan, np.nan))
         if 'comsol_lam_nm' not in q:                                # lum_ad_mf60 predates the stored COMSOL values
             q['comsol_lam_nm'], q['comsol_Q'] = comsol_ad(q)
+    for q in pts:                                                   # expected resonance: COMSOL, else extrapolated in a at this shape
+        lam = q['comsol_lam_nm']
+        if not np.isfinite(lam):
+            S = sorted([(r['a'], r['comsol_lam_nm']) for r in pts if np.isfinite(r['comsol_lam_nm'])
+                        and (r['d'], r.get('xi'), r.get('chi')) == (q['d'], q.get('xi'), q.get('chi'))])
+            if len(S) >= 2:
+                (a1, l1), (a2, l2) = (S[-2], S[-1]) if q['a'] > S[-1][0] else (S[0], S[1])
+                lam = l1 + (l2 - l1) * (q['a'] - a1) / (a2 - a1)
+        q['out_of_window'] = bool(np.isfinite(lam) and not WIN[0] + 2 < lam < WIN[1] - 2)
+        if q['out_of_window']:                                      # Lumerical value there is a different (junk) mode
+            q['lum_lam'], q['lum_Q'] = np.nan, np.nan
     return pts, len(lum)
 
 
@@ -73,9 +86,11 @@ def grid_maps(fig, gs_row, pts, keyl, keyq, label):
                 if np.isfinite(raw[i, k]):
                     ax.text(a, i, f'{raw[i, k]:.0f}' if j == 0 else f'{raw[i, k]:.0e}'.replace('e+0', 'e'),
                             ha='center', va='center', fontsize=6)
+                elif keyl == 'lum_lam' and any(q['out_of_window'] and q['a'] == a and q['d'] == d for q in pts):
+                    ax.text(a, i, 'out of\nwindow', ha='center', va='center', fontsize=5, color='0.35')
         ax.set_yticks(range(len(D)), [f'{d:.2f}' for d in D]); ax.set_xlabel('mirror period a (nm)'); ax.set_ylabel('taper depth d')
         ax.set_title(f'{label}: ' + ('resonance (nm)' if j == 0 else 'optical Q'), fontweight='bold')
-        fig.colorbar(im, ax=ax, label=cb, fraction=0.046)
+        fig.colorbar(im, ax=ax, label=cb, fraction=0.046, pad=0.02)
 
 
 def on_line(pts, keyl, keyq, a_ref=None):
@@ -147,7 +162,7 @@ if __name__ == '__main__':
     pts, n_lum = load(name, '--pull' in sys.argv)
     is_ad = 'ad' in name.split('_')
     if is_ad:
-        fig = plt.figure(figsize=(14, 13)); gs = fig.add_gridspec(3, 2)
+        fig = plt.figure(figsize=(17, 13)); gs = fig.add_gridspec(3, 2, wspace=0.35, hspace=0.35)
         grid_maps(fig, gs[0, :].subgridspec(1, 2), pts, 'comsol_lam_nm', 'comsol_Q', 'COMSOL')
         grid_maps(fig, gs[1, :].subgridspec(1, 2), pts, 'lum_lam', 'lum_Q', 'Lumerical')
         parity(fig, gs[2, :].subgridspec(1, 2), pts)

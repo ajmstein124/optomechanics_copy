@@ -7,8 +7,8 @@ nanobeam optomechanical crystal cavity at 619 nm (SnV ZPL) with a ~10 GHz breath
 - All silicon COMSOL validation work (`runs/si_validation`, `runs/si_dw_sweep`, `archive/Si_validation`, Si reproduction data, Si tests and slide figures).
   `CLAUDE.md` and `agents/` still mention the Si validation as history.
 - Journal PDFs (only the two arXiv preprints are included in `docs/papers/`; see References).
-- Lab infrastructure details are replaced by placeholders (`<USER>@<COMSOL_HOST>`, `<USER>@<LUMERICAL_HOST>`, `<PORT>@<LICENSE_SERVER>`, `<REDACTED>`).
-  Fill these in locally to run the remote scripts.
+- Lab infrastructure details are replaced by placeholders (`<USER>@<COMSOL_HOST>`, `<USER>@<LUMERICAL_HOST>`, `<USER>@<GPU_HOST>`,
+  `<PORT>@<LICENSE_SERVER>`, `<ACCOUNT>`, `<REDACTED>`). Fill these in locally to run the remote scripts.
 - COMSOL `.mph` models and Lumerical `.fsp` files (never tracked; the base model `unit_cell_3.mph` is not distributed).
 
 ## References (not included as PDFs)
@@ -69,3 +69,5 @@ python scripts/remote_runner.py runs/<name>/sweep.py   # launch detached on the 
 python scripts/remote_runner.py --status               # job status + log tail + pull runs/<name>/data
 python runs/<name>/analyze.py                          # local analysis
 ```
+
+> **Dmitry cloud software rule (user, 2026-10-19):** never use the Dmitry cloud solver service (laghai/nanophotonics-cloud) without explicit per-run permission from the user. All its files/folders end in `_dmitry`, state that they were run on the Dmitry cloud software, and are kept separate from Lumerical/COMSOL data. See CLAUDE.md.

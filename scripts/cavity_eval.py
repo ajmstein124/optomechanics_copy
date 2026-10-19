@@ -17,12 +17,17 @@ HBAR = 1.054571817e-34
 
 def setup(model):
     m = model.java; comp = m.component('comp1')
+    names = [str(n) for n in m.param().varnames()]
+    if 'symf' not in names:                            # models built before 2026-10-18 (1/8 model)
+        m.param().set('symf', '8')
     s = comp.selection().create('sel_side', 'Box'); s.set('entitydim', '2')
-    for ax, lo, hi in (('x', '(-tol)', 'X_in+tol'), ('y', 'w/2-tol', 'w/2+tol'), ('z', '(-tol)', 't/2+tol')):
+    full = 'sel_z0_all' not in [str(t) for t in comp.selection().tags()]     # sidewall-angle (full-thickness) model
+    for ax, lo, hi in (('x', '(-tol)', 'X_in+tol'), ('y', 'w/2-tol', 'w/2+2*dsw+tol' if full else 'w/2+tol'),
+                       ('z', '(-t/2-tol)' if full else '(-tol)', 't/2+tol')):
         s.set(f'{ax}min', lo); s.set(f'{ax}max', hi)
     s.set('condition', 'inside')
     mb = comp.selection().create('sel_mb', 'Difference'); mb.set('entitydim', '2'); mb.set('add', ['sel_beam_bnd'])
-    mb.set('subtract', ['sel_x0_all', 'sel_y0_all', 'sel_z0_all', 'sel_end'])
+    mb.set('subtract', ['sel_x0_all', 'sel_y0_all', 'sel_end'] + ([] if full else ['sel_z0_all']))
     for tag, sel, dim in (('int_beam', 'sel_beam', 3), ('int_inner', 'sel_inner', 3), ('int_mb', 'sel_mb', 2),
                           ('int_side', 'sel_side', 2)):
         o = comp.cpl().create(tag, 'Integration'); o.selection().geom('geom1', dim); o.selection().named(sel)
@@ -85,6 +90,6 @@ def g0_of(m, k, io, f_o, f_m):
           f"+abs(ewfd.Ez)^2*({P11}*{S['ZZ']}+{P12}*({S['XX']}+{S['YY']}))")
     pei = ev(m, f'epsilon0_const*n_d^4*int_beam({pe})', 'dset2', io)
     umax = ev(m, 'max_beam(solid.disp)', 'dset1', k)
-    meff = ev(m, '8*int_beam(rho_d*solid.disp^2)/max_beam(solid.disp^2)', 'dset1', k)
+    meff = ev(m, 'symf*int_beam(rho_d*solid.disp^2)/max_beam(solid.disp^2)', 'dset1', k)
     xzpf = np.sqrt(HBAR / (2 * meff * 2 * np.pi * f_m))
     return -(f_o / 2) * mbi / den / umax * xzpf, (f_o / 2) * pei / den / umax * xzpf, meff

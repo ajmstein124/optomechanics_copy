@@ -260,3 +260,5 @@ returns 0 points via setInterpolationCoordinates -> use CutPlane dataset + Data 
 - Waiter chain 10/15: width run.py → deliverables.py (refinalize + bands) → fsp_builds.py → run_w700.py (which re-runs both).
 - Lumerical runs: old PC DESKTOP-BBQLCD3 (`<USER>@<LUMERICAL_HOST>`, v211, `py -3.8`), never jv-adamantoise. Lumerical safe mode (API) blocks
   `system()` and `rm()`; detached launch there via a .bat + Invoke-CimMethod (inline cmd quoting breaks).
+
+> **Dmitry cloud software rule (user, 2026-10-19):** never use the Dmitry cloud solver service (laghai/nanophotonics-cloud) without explicit per-run permission from the user. All its files/folders end in `_dmitry`, state that they were run on the Dmitry cloud software, and are kept separate from Lumerical/COMSOL data. See CLAUDE.md.

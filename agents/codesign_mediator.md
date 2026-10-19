@@ -126,3 +126,5 @@ fabrication (60/80 nm) limits how flat/large the center holes can be. Final = on
   brings the breathing mode below 10 GHz without hurting optics; the taper then trades Q against mechanical localization.
 - Selection rule (scripts/cavity_designs.py): fabricable, breathing loc ≥ 0.8, not a hybrid; ≤ 10 GHz first by highest Q_o.
 - 60 nm: solved (w650 d0.10 ξ6 χ4, Q 1.8e7, 9.67 GHz). 80 nm: open — w650 gives 10.53 GHz (no taper freedom at a ≈ 184); w700 queued.
+
+> **Dmitry cloud software rule (user, 2026-10-19):** never use the Dmitry cloud solver service (laghai/nanophotonics-cloud) without explicit per-run permission from the user. All its files/folders end in `_dmitry`, state that they were run on the Dmitry cloud software, and are kept separate from Lumerical/COMSOL data. See CLAUDE.md.

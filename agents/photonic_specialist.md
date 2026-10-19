@@ -118,3 +118,5 @@ Qanalysis (runs/cavity_619/lumerical/make_lsf.py), build-only until user authori
 - Lumerical vs COMSOL, best 60 nm device: 618.89 vs 619.49 nm (−0.1 %); Lumerical Q 1.3e6 at 1.5 ps is a lower bound (photon lifetime ~10 ns).
   .lsf defaults: use_symmetry 1 (x/y anti-symmetric, z symmetric), sim_time 1.5 ps, Qanalysis probes inside the simulated octant.
 - 140 nm thickness (user question): slightly better confinement/Q, z-odd TE1 slab cutoff ≈ 141 nm at 619 nm, no help for the breathing frequency.
+
+> **Dmitry cloud software rule (user, 2026-10-19):** never use the Dmitry cloud solver service (laghai/nanophotonics-cloud) without explicit per-run permission from the user. All its files/folders end in `_dmitry`, state that they were run on the Dmitry cloud software, and are kept separate from Lumerical/COMSOL data. See CLAUDE.md.

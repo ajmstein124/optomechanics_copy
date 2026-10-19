@@ -1,0 +1,12 @@
+d,xi,chi,a_nm,optical_Q,breathing_GHz,localization,sidewall_ratio_S,min_feature_nm,fabricable,hybrid,meets_10GHz,rank
+0.1,4.0,3.5,189.6,7.88e+06,10.401,0.854,,70.8,True,False,False,3
+0.1,6.0,4.0,190.3,1.83e+07,9.666,0.946,1.0,64.3,True,False,True,1
+0.1,6.0,4.5,188.7,4.4e+06,10.386,0.739,,68.3,True,False,False,
+0.1,6.0,5.0,187.3,9.72e+05,10.439,0.745,,72.3,True,False,False,
+0.13,4.0,3.5,194.0,2.98e+07,9.825,0.857,0.35,68.7,True,True,True,
+0.13,6.0,4.5,192.1,5.1e+04,10.122,0.895,,67.5,True,False,False,2
+0.13,6.0,5.0,190.1,2.91e+04,10.465,0.616,,73.4,True,False,False,
+0.16,4.0,3.5,198.1,1.29e+05,10.37,0.587,,67.8,True,False,False,
+0.16,6.0,4.5,195.0,5.56e+03,8.181,0.662,,68.9,True,False,True,
+0.16,6.0,5.0,192.6,4.07e+03,5.455,0.741,,74.7,True,False,True,
+0.16,8.0,5.0,194.2,1.64e+03,10.841,0.973,,62.9,True,False,False,4

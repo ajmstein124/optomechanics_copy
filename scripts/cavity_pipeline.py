@@ -23,6 +23,7 @@ import numpy as np
 from build_cavity_model import build, set_layout, op_class, mech_class
 from cavity_taper import layout, min_features
 import cavity_eval as E
+from comsol_utils import mphglobal
 
 LAM0, X_LOC = 619.4, 1500.0
 
@@ -48,22 +49,30 @@ def breathing_index(loc, B, g, S=None):
 
 
 class Pipeline:
-    def __init__(self, run_dir, cell, min_feature, label):
-        """cell: dict w, t, hx_a, hy_w. label: short name for files/logs."""
+    def __init__(self, run_dir, cell, min_feature, label, n_mirror=10, M=10, swa=None):
+        """cell: dict w, t, hx_a, hy_w. label: short name for files/logs. n_mirror: mirror cells beyond the
+        M = 10 taper cells (fixed per pipeline: the model is built once with this hole count)."""
         self.rd = Path(run_dir); self.dd = self.rd / 'data'; self.dd.mkdir(parents=True, exist_ok=True)
-        self.cell, self.mf, self.label = cell, float(min_feature), label
+        self.cell, self.mf, self.label, self.n_mirror, self.M = cell, float(min_feature), label, int(n_mirror), int(M)
+        self.swa = swa                                    # sidewall angle (deg); not None -> full-thickness model
         self.client = None
 
     # ---------------------------------------------------------------- helpers
     def cfg(self, a, d, xi, chi):
         c = self.cell
         return dict(a_m=round(float(a), 1), w=c['w'], t=c['t'], hx_m=round(c['hx_a'] * a, 3),
-                    hy_m=round(c['hy_w'] * c['w'], 3), M=10, n_mirror=10, d=float(d), eta=1.0,
-                    xi=float(xi), chi=float(chi), pad_x=1000)
+                    hy_m=round(c['hy_w'] * c['w'], 3), M=self.M, n_mirror=self.n_mirror, d=float(d), eta=1.0,
+                    xi=float(xi), chi=float(chi), pad_x=1000, **({'lock_x': True} if c.get('lock_x') else {}),
+                    **({'swa': float(self.swa)} if self.swa is not None else {}))
 
     def feasible(self, cfg):
-        mf = min_features(layout(cfg['a_m'], cfg['hx_m'], cfg['hy_m'], 10, 10, cfg['d'], 1.0, cfg['xi'], cfg['chi']),
+        mf = min_features(layout(cfg['a_m'], cfg['hx_m'], cfg['hy_m'], cfg['M'], cfg['n_mirror'], cfg['d'], 1.0, cfg['xi'], cfg['chi'], cfg.get('lock_x', False), cfg.get('profile')),
                           cfg['w'])
+        if cfg.get('swa') is not None:                       # holes narrow toward the bottom: must stay open (>= 20 nm)
+            lay = layout(cfg['a_m'], cfg['hx_m'], cfg['hy_m'], cfg['M'], cfg['n_mirror'], cfg['d'], 1.0, cfg['xi'], cfg['chi'],
+                         cfg.get('lock_x', False), cfg.get('profile'))
+            mf = dict(mf, hole_bottom=float(min(lay['hx'].min(), lay['hy'].min()) - 2 * cfg['t'] * np.tan(np.radians(cfg['swa']))))
+            return min(v for k, v in mf.items() if k != 'hole_bottom') >= self.mf and mf['hole_bottom'] >= 20.0, mf
         return min(mf.values()) >= self.mf, mf
 
     def open(self):
@@ -87,7 +96,8 @@ class Pipeline:
         m = self.model.java
         for k, v in (('pad_y', 600), ('pad_z', 600), ('d_pml', 500)):
             m.param().set(k, f'{v}[nm]')
-        m.param().set('N_op', '20'); m.param().set('N_mode', '60'); m.param().set('f_mech', '11[GHz]')
+        full = self.swa is not None
+        m.param().set('N_op', '30' if full else '20'); m.param().set('N_mode', '100' if full else '60'); m.param().set('f_mech', '10.5[GHz]' if full else '11[GHz]')
         op_class(self.model, x='PEC', y='PEC', z='PMC'); mech_class(self.model, '+', '+', '+')
         E.setup(self.model)
 
@@ -105,11 +115,16 @@ class Pipeline:
         fm, locm, B = E.solve_mech(m, X_LOC)
         g = np.full((len(fm), 3), np.nan)
         for k in range(1, len(fm) + 1):
-            if locm[k - 1] > 0.8:
+            if locm[k - 1] > 0.8 and B[k - 1] > 0.5:      # breathing-like only (full-thickness models have many localized flexural modes)
                 try:
                     g[k - 1] = E.g0_of(m, k, io, fo[io - 1], fm[k - 1])
                 except Exception as e:
                     p(f'    g0 mode {k} failed: {str(e)[:150]}')
+        try:                                                  # wide-window localization (2026-10-17): broad gentle-taper modes score low at 1.5 um
+            loc3 = np.real(mphglobal(m, 'int_beam(solid.disp^2*(x<3000[nm]))/int_beam(solid.disp^2)', 'dset1'))
+            clamp = np.real(mphglobal(m, f'int_beam(solid.disp^2*(x>X_in-500[nm]))/int_beam(solid.disp^2)', 'dset1'))
+        except Exception:
+            loc3 = np.full(len(fm), np.nan); clamp = np.full(len(fm), np.nan)
         S = np.full(len(fm), np.nan)                          # sidewall amplitude ratio, breathing candidates only
         for k in np.where((locm > 0.5) & (B > 0.5))[0]:
             S[k] = E.sidewall_ratio(m, X_LOC, k + 1)
@@ -118,10 +133,10 @@ class Pipeline:
         fb = fm[ib] / 1e9 if ib >= 0 else np.nan
         np.savez(str(fn), skipped=False, cfg=json.dumps(cfg), lam=lam, Q=Qo[io - 1], f_breath=fb,
                  f_opt=fo, Q_opt=Qo, loc_opt=loco, i_opt=io, f_mech=fm, loc_mech=locm, B=B, S=S,
-                 gMB=g[:, 0], gPE=g[:, 1], meff=g[:, 2], i_breath=ib, **mf, **(extra or {}))
+                 gMB=g[:, 0], gPE=g[:, 1], meff=g[:, 2], i_breath=ib, loc_mech3=loc3, clamp_frac=clamp, **mf, **(extra or {}))
         p(f'[{self.label}] {fn.name}: {lam:.1f} nm Q={Qo[io-1]:.3g} | breathing {fb:.3f} GHz | '
           f'min feat {min(mf.values()):.0f} nm | {time.time()-t0:.0f} s')
-        wk = [f'{fm[i]/1e9:.2f} (loc {locm[i]:.2f}, S {S[i]:.2f})' for i in np.argsort(fm) if B[i] > 0.5 and locm[i] > 0.5]
+        wk = [f'{fm[i]/1e9:.2f} (loc {locm[i]:.2f}/{loc3[i]:.2f}, clamp {clamp[i]:.1e}, S {S[i]:.2f})' for i in np.argsort(fm) if B[i] > 0.5 and locm[i] > 0.5]
         if wk:
             p(f'    breathing-like (B > 0.5, loc > 0.5): ' + ', '.join(wk[:4]))
         return dict(lam=lam, Q=Qo[io - 1], fb=fb)
