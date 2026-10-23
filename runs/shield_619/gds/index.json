@@ -1,0 +1,148 @@
+{
+ "ref_noshield_a450": {
+  "X_in_nm": 4803.264999999999,
+  "slab_inner_nm": [
+   2750.0,
+   2750.0
+  ],
+  "d_pml_nm": 1500.0,
+  "n_crosses_full": 0,
+  "comsol_case": "nm10_noshield",
+  "cavity": {
+   "a_m": 189.5,
+   "w": 650,
+   "t": 120,
+   "hx_m": 75.814,
+   "hy_m": 390.0,
+   "M": 10,
+   "n_mirror": 10,
+   "d": 0.086,
+   "eta": 1.0,
+   "xi": 1.79,
+   "chi": -6.97,
+   "pad_x": 1000
+  },
+  "shield": {
+   "a": 450,
+   "h": 365,
+   "w": 100,
+   "fillet": 20,
+   "Ns": 4,
+   "n_pad": 1,
+   "n_pad_y": 1,
+   "m_out": 500,
+   "d_pml": 1500,
+   "use": false
+  }
+ },
+ "ref_shield_a450_h390_w140": {
+  "X_in_nm": 4803.264999999999,
+  "slab_inner_nm": [
+   2750.0,
+   2750.0
+  ],
+  "d_pml_nm": 1500.0,
+  "n_crosses_full": 96,
+  "comsol_case": "nm10_shield",
+  "cavity": {
+   "a_m": 189.5,
+   "w": 650,
+   "t": 120,
+   "hx_m": 75.814,
+   "hy_m": 390.0,
+   "M": 10,
+   "n_mirror": 10,
+   "d": 0.086,
+   "eta": 1.0,
+   "xi": 1.79,
+   "chi": -6.97,
+   "pad_x": 1000
+  },
+  "shield": {
+   "a": 450,
+   "h": 390,
+   "w": 140,
+   "fillet": 20,
+   "Ns": 4,
+   "n_pad": 1,
+   "n_pad_y": 1,
+   "m_out": 500,
+   "d_pml": 1500,
+   "use": true
+  }
+ },
+ "ref_noshield_a460_xoff35": {
+  "X_in_nm": 4803.264999999999,
+  "slab_inner_nm": [
+   2835.0,
+   2800.0
+  ],
+  "d_pml_nm": 1500.0,
+  "n_crosses_full": 0,
+  "comsol_case": "nm10_noshield65",
+  "cavity": {
+   "a_m": 189.5,
+   "w": 650,
+   "t": 120,
+   "hx_m": 75.814,
+   "hy_m": 390.0,
+   "M": 10,
+   "n_mirror": 10,
+   "d": 0.086,
+   "eta": 1.0,
+   "xi": 1.79,
+   "chi": -6.97,
+   "pad_x": 1000
+  },
+  "shield": {
+   "a": 460,
+   "h": 365,
+   "w": 100,
+   "fillet": 20,
+   "Ns": 4,
+   "n_pad": 1,
+   "n_pad_y": 1,
+   "m_out": 500,
+   "d_pml": 1500,
+   "use": false,
+   "x_off": 35
+  }
+ },
+ "ref_shield65_a460_h395_w150_xoff35": {
+  "X_in_nm": 4803.264999999999,
+  "slab_inner_nm": [
+   2835.0,
+   2800.0
+  ],
+  "d_pml_nm": 1500.0,
+  "n_crosses_full": 96,
+  "comsol_case": "nm10_shield65",
+  "cavity": {
+   "a_m": 189.5,
+   "w": 650,
+   "t": 120,
+   "hx_m": 75.814,
+   "hy_m": 390.0,
+   "M": 10,
+   "n_mirror": 10,
+   "d": 0.086,
+   "eta": 1.0,
+   "xi": 1.79,
+   "chi": -6.97,
+   "pad_x": 1000
+  },
+  "shield": {
+   "a": 460,
+   "h": 395,
+   "w": 150,
+   "fillet": 20,
+   "Ns": 4,
+   "n_pad": 1,
+   "n_pad_y": 1,
+   "m_out": 500,
+   "d_pml": 1500,
+   "use": true,
+   "x_off": 35
+  }
+ }
+}

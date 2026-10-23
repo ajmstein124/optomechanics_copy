@@ -1,0 +1,125 @@
+{
+  "sweep_id": "sweep-c11edac992d7da32c9a8",
+  "runs": [
+    {
+      "assignments": {
+        "geometry.hole.h": 290,
+        "geometry.hole.w": 100,
+        "geometry.lattice.a": 350
+      },
+      "index": 0,
+      "run_id": "run-e8974a5c6bc91873beff",
+      "status": "done"
+    },
+    {
+      "assignments": {
+        "geometry.hole.h": 250,
+        "geometry.hole.w": 100,
+        "geometry.lattice.a": 350
+      },
+      "index": 1,
+      "run_id": "run-63a4005556ec911e3742",
+      "status": "done"
+    },
+    {
+      "assignments": {
+        "geometry.hole.h": 390,
+        "geometry.hole.w": 100,
+        "geometry.lattice.a": 450
+      },
+      "index": 2,
+      "run_id": "run-15a4725f31d047e1783d",
+      "status": "done"
+    },
+    {
+      "assignments": {
+        "geometry.hole.h": 350,
+        "geometry.hole.w": 100,
+        "geometry.lattice.a": 450
+      },
+      "index": 3,
+      "run_id": "run-7681a4fe35d1b0b71821",
+      "status": "done"
+    },
+    {
+      "assignments": {
+        "geometry.hole.h": 490,
+        "geometry.hole.w": 100,
+        "geometry.lattice.a": 550
+      },
+      "index": 4,
+      "run_id": "run-d99169f34a2d22d042cc",
+      "status": "done"
+    },
+    {
+      "assignments": {
+        "geometry.hole.h": 450,
+        "geometry.hole.w": 100,
+        "geometry.lattice.a": 550
+      },
+      "index": 5,
+      "run_id": "run-def38e1469717f3988c2",
+      "status": "done"
+    },
+    {
+      "assignments": {
+        "geometry.hole.h": 590,
+        "geometry.hole.w": 100,
+        "geometry.lattice.a": 650
+      },
+      "index": 6,
+      "run_id": "run-af7c6af4cdd3e98da765",
+      "status": "done"
+    },
+    {
+      "assignments": {
+        "geometry.hole.h": 550,
+        "geometry.hole.w": 100,
+        "geometry.lattice.a": 650
+      },
+      "index": 7,
+      "run_id": "run-a7d80f2fce7404653f94",
+      "status": "done"
+    },
+    {
+      "assignments": {
+        "geometry.hole.h": 390,
+        "geometry.hole.w": 70,
+        "geometry.lattice.a": 450
+      },
+      "index": 8,
+      "run_id": "run-e4119e88f9d3895016e9",
+      "status": "done"
+    },
+    {
+      "assignments": {
+        "geometry.hole.h": 390,
+        "geometry.hole.w": 140,
+        "geometry.lattice.a": 450
+      },
+      "index": 9,
+      "run_id": "run-a77d22bb0348527864c8",
+      "status": "done"
+    },
+    {
+      "assignments": {
+        "geometry.hole.h": 490,
+        "geometry.hole.w": 70,
+        "geometry.lattice.a": 550
+      },
+      "index": 10,
+      "run_id": "run-57ed2b7c07725b33fc33",
+      "status": "done"
+    },
+    {
+      "assignments": {
+        "geometry.hole.h": 490,
+        "geometry.hole.w": 140,
+        "geometry.lattice.a": 550
+      },
+      "index": 11,
+      "run_id": "run-c87d99efb509f9d50d03",
+      "status": "done"
+    }
+  ]
+}

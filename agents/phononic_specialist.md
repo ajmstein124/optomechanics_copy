@@ -215,3 +215,10 @@ levers: center-hole aspect xi / area chi (fabrication-limited) or beam width w.
 - Breathing strain (εyy−εxx) peaks on axis in the first bridge next to the center hole (x ≈ 62 nm at w550), ~30 nm from the optical |E| max.
 
 > **Dmitry cloud software rule (user, 2026-10-19):** never use the Dmitry cloud solver service (laghai/nanophotonics-cloud) without explicit per-run permission from the user. All its files/folders end in `_dmitry`, state that they were run on the Dmitry cloud software, and are kept separate from Lumerical/COMSOL data. See CLAUDE.md.
+
+## Cross phonon shield (2026-10-22/23, runs/shield_619)
+- Square lattice, cross holes (bar length h, bar width w, fillet 20), diamond t 120 nm. Gap center ~1/a; narrower bridges a−h widen the gap
+  (a 450: bridge 100 → no gap, 60 → 2 GHz); wider bars lower it. 65 nm-compliant cell: a 460, h 395, w 150 → complete gap 9.46–11.45 GHz.
+- Complete-gap test: inside every k-point's computed window, > 0.8 GHz (smaller slivers are k-sampling artifacts).
+- Full structure: plain anchor Q_m saturates ~1.5e7 (slab radiation, every class); 4 shield periods → ~3e9 (shield-tunneling limited,
+  2 periods 5.6e8). Keep the first cross column ≥ 65 nm from the trench edge (x_off).

@@ -1,0 +1,190 @@
+{
+ "cavity": {
+  "a_m": 189.5,
+  "w": 650,
+  "t": 120,
+  "hx_m": 75.814,
+  "hy_m": 390.0,
+  "M": 10,
+  "n_mirror": 10,
+  "d": 0.086,
+  "eta": 1.0,
+  "xi": 1.79,
+  "chi": -6.97,
+  "pad_x": 1000
+ },
+ "f_target": 9810000000.0,
+ "shield": {
+  "a": 450,
+  "h": 365,
+  "w": 100,
+  "fillet": 20,
+  "Ns": 4,
+  "n_pad": 1,
+  "n_pad_y": 1,
+  "m_out": 500,
+  "d_pml": 1500
+ },
+ "cases": [
+  {
+   "name": "nm10_noshield",
+   "n_mirror": 10,
+   "shield": false
+  },
+  {
+   "name": "nm4_noshield",
+   "n_mirror": 4,
+   "shield": false
+  },
+  {
+   "name": "nm2_noshield",
+   "n_mirror": 2,
+   "shield": false
+  },
+  {
+   "name": "nm10_shield",
+   "n_mirror": 10,
+   "shield": true,
+   "shield_override": {
+    "h": 390,
+    "w": 140
+   }
+  },
+  {
+   "name": "nm4_shield",
+   "n_mirror": 4,
+   "shield": true,
+   "shield_override": {
+    "h": 390,
+    "w": 140
+   }
+  },
+  {
+   "name": "nm2_shield",
+   "n_mirror": 2,
+   "shield": true,
+   "shield_override": {
+    "h": 390,
+    "w": 140
+   }
+  },
+  {
+   "name": "nm10_noshield_pml3k",
+   "n_mirror": 10,
+   "shield": false,
+   "shield_override": {
+    "d_pml": 3000
+   },
+   "fields": false
+  },
+  {
+   "name": "nm10_shield_pml3k",
+   "n_mirror": 10,
+   "shield": true,
+   "shield_override": {
+    "h": 390,
+    "w": 140,
+    "d_pml": 3000
+   },
+   "fields": false
+  },
+  {
+   "name": "nm10_shield_fine",
+   "n_mirror": 10,
+   "shield": true,
+   "shield_override": {
+    "h": 390,
+    "w": 140,
+    "h_slab": "22[nm]"
+   },
+   "fields": false
+  },
+  {
+   "name": "nm10_shield_Ns2",
+   "n_mirror": 10,
+   "shield": true,
+   "shield_override": {
+    "h": 390,
+    "w": 140,
+    "Ns": 2,
+    "m_out": 1400
+   },
+   "fields": true
+  },
+  {
+   "name": "nm10_noshield65",
+   "n_mirror": 10,
+   "shield": false,
+   "shield_override": {
+    "a": 460,
+    "x_off": 35
+   }
+  },
+  {
+   "name": "nm4_noshield65",
+   "n_mirror": 4,
+   "shield": false,
+   "shield_override": {
+    "a": 460,
+    "x_off": 35
+   }
+  },
+  {
+   "name": "nm2_noshield65",
+   "n_mirror": 2,
+   "shield": false,
+   "shield_override": {
+    "a": 460,
+    "x_off": 35
+   }
+  },
+  {
+   "name": "nm10_shield65",
+   "n_mirror": 10,
+   "shield": true,
+   "shield_override": {
+    "a": 460,
+    "h": 395,
+    "w": 150,
+    "x_off": 35
+   }
+  },
+  {
+   "name": "nm4_shield65",
+   "n_mirror": 4,
+   "shield": true,
+   "shield_override": {
+    "a": 460,
+    "h": 395,
+    "w": 150,
+    "x_off": 35
+   }
+  },
+  {
+   "name": "nm2_shield65",
+   "n_mirror": 2,
+   "shield": true,
+   "shield_override": {
+    "a": 460,
+    "h": 395,
+    "w": 150,
+    "x_off": 35
+   }
+  },
+  {
+   "name": "nm10_shield65_pml3k",
+   "n_mirror": 10,
+   "shield": true,
+   "shield_override": {
+    "a": 460,
+    "h": 395,
+    "w": 150,
+    "x_off": 35,
+    "d_pml": 3000
+   },
+   "fields": false
+  }
+ ],
+ "shield_cell_source": "Dmitry cloud software sweep sweep-c11edac992d7da32c9a8 (runs/dmitry/shield1_dmitry): a 450 h 390 w 140 fillet 20, gap 9.40-11.47 GHz",
+ "shield_cell_source_65": "Dmitry cloud software sweep sweep-5ff274a306306db50948 (runs/dmitry/shield1_dmitry): a 460 h 395 w 150 fillet 20, bridges 65 nm, gap 9.46-11.45 GHz; lattice shifted x_off 35 nm from the trench (edge strip 67.5 nm)"
+}

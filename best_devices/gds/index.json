@@ -1,0 +1,158 @@
+{
+ "w650_m186_c455_d086": {
+  "gds": "best_devices/gds/w650_m186_c455_d086.gds",
+  "beam_um": 9.60653,
+  "window_um": [
+   15.27653,
+   5.67
+  ],
+  "min_features": {
+   "bridge": 69.90972258441062,
+   "rail": 97.45739920794423,
+   "hole": 75.814
+  }
+ },
+ "w650_m186_c455_d086_dev": {
+  "gds": "best_devices/60nm_w650_d0.086_xi1.79_chi-6.97_gapconf/60nm_w650_d0.086_xi1.79_chi-6.97_gapconf.gds",
+  "beam_um": 9.60653,
+  "window_um": [
+   15.27653,
+   5.67
+  ],
+  "min_features": {
+   "bridge": 69.90972258441062,
+   "rail": 97.45739920794423,
+   "hole": 75.814
+  }
+ },
+ "w650_m186_c455_d086_shield": {
+  "gds": "best_devices/60nm_w650_d0.086_xi1.79_chi-6.97_gapconf/60nm_w650_d0.086_xi1.79_chi-6.97_gapconf_shield.gds",
+  "beam_um": 9.60653,
+  "window_um": [
+   15.27653,
+   5.67
+  ],
+  "min_features": {
+   "bridge": 69.90972258441062,
+   "rail": 97.45739920794423,
+   "hole": 75.814
+  }
+ },
+ "w650_m186_c455_d118": {
+  "gds": "best_devices/gds/w650_m186_c455_d118.gds",
+  "beam_um": 9.780828000000001,
+  "window_um": [
+   15.450828000000001,
+   5.67
+  ],
+  "min_features": {
+   "bridge": 69.66496373288248,
+   "rail": 97.61721999896298,
+   "hole": 78.174
+  }
+ },
+ "w650_m192_hy66_c455_d146": {
+  "gds": "best_devices/gds/w650_m192_hy66_c455_d146.gds",
+  "beam_um": 9.955447999999997,
+  "window_um": [
+   15.625447999999997,
+   5.67
+  ],
+  "min_features": {
+   "bridge": 69.40613350233134,
+   "rail": 97.52309467450397,
+   "hole": 80.498
+  }
+ },
+ "w700_m186_c420_d118": {
+  "gds": "best_devices/gds/w700_m186_c420_d118.gds",
+  "beam_um": 9.637476000000003,
+  "window_um": [
+   15.307476000000003,
+   5.67
+  ],
+  "min_features": {
+   "bridge": 68.47495352112942,
+   "rail": 138.48899021306485,
+   "hole": 76.707
+  }
+ },
+ "w700_m186_c490_d118": {
+  "gds": "best_devices/gds/w700_m186_c490_d118.gds",
+  "beam_um": 9.733043999999998,
+  "window_um": [
+   15.403043999999998,
+   5.67
+  ],
+  "min_features": {
+   "bridge": 69.25941947116834,
+   "rail": 105.12623692196013,
+   "hole": 77.677
+  }
+ },
+ "w700_m192_c420_d146": {
+  "gds": "best_devices/gds/w700_m192_c420_d146.gds",
+  "beam_um": 9.793334,
+  "window_um": [
+   15.463334,
+   5.67
+  ],
+  "min_features": {
+   "bridge": 68.02948339458368,
+   "rail": 138.65169323246354,
+   "hole": 78.847
+  }
+ },
+ "w700_m198_c420_d172": {
+  "gds": "best_devices/gds/w700_m198_c420_d172.gds",
+  "beam_um": 9.946344000000005,
+  "window_um": [
+   15.616344000000005,
+   5.67
+  ],
+  "min_features": {
+   "bridge": 67.73217182378805,
+   "rail": 138.83763279490512,
+   "hole": 80.939
+  }
+ },
+ "60nm_w650_d0.10_xi6_chi4": {
+  "gds": "best_devices/not_gap_confined/60nm_w650_d0.10_xi6_chi4/60nm_w650_d0.10_xi6_chi4.gds",
+  "beam_um": 9.612000000000004,
+  "window_um": [
+   15.282000000000004,
+   5.67
+  ],
+  "min_features": {
+   "bridge": 64.37283906546782,
+   "rail": 74.75,
+   "hole": 100.85900000000001
+  }
+ },
+ "80nm_w700_d0.10_xi4_chi3.5": {
+  "gds": "best_devices/not_gap_confined/80nm_w700_d0.10_xi4_chi3.5/80nm_w700_d0.10_xi4_chi3.5.gds",
+  "beam_um": 9.312000000000003,
+  "window_um": [
+   14.982000000000003,
+   5.67
+  ],
+  "min_features": {
+   "bridge": 82.8472037698221,
+   "rail": 105.00000000000003,
+   "hole": 81.87670646605417
+  }
+ },
+ "80nm_w713_d0.135_xi2.1_chi3.55_BO": {
+  "gds": "best_devices/not_gap_confined/80nm_w713_d0.135_xi2.1_chi3.55_BO/80nm_w713_d0.135_xi2.1_chi3.55_BO.gds",
+  "beam_um": 9.51586444,
+  "window_um": [
+   15.18586444,
+   5.67
+  ],
+  "min_features": {
+   "bridge": 83.63866879296563,
+   "rail": 83.81050000000005,
+   "hole": 80.34102691898217
+  }
+ }
+}

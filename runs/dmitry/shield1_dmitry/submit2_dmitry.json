@@ -1,0 +1,203 @@
+{
+  "sweep_id": "sweep-5ff274a306306db50948",
+  "runs": [
+    {
+      "index": 0,
+      "assignments": {
+        "geometry.lattice.a": 450,
+        "geometry.hole.h": 385,
+        "geometry.hole.w": 140
+      },
+      "run_id": "run-a16581f387388bff8efe",
+      "lane": "elastic",
+      "status": "queued",
+      "cached": false,
+      "estimate": {
+        "lane": "elastic",
+        "machine": "c2d-standard-16",
+        "workers": 8,
+        "ndof": 26949,
+        "ndof_run": "sym",
+        "elements": 5280,
+        "kpoints": 24,
+        "symmetry_runs": 2,
+        "sec_per_k_model": 22.3,
+        "worker_rss_gb_model": 2.15,
+        "solver_hours_model": 0.0372,
+        "hours_limit": 0.15,
+        "usd_rate_per_h": 0.75,
+        "usd_expected": 0.065,
+        "usd_ceiling": 0.11
+      },
+      "usd_ceiling": 0.11
+    },
+    {
+      "index": 1,
+      "assignments": {
+        "geometry.lattice.a": 450,
+        "geometry.hole.h": 385,
+        "geometry.hole.w": 160
+      },
+      "run_id": "run-90bfc39809568c7538dd",
+      "lane": "elastic",
+      "status": "queued",
+      "cached": false,
+      "estimate": {
+        "lane": "elastic",
+        "machine": "c2d-standard-16",
+        "workers": 8,
+        "ndof": 26167,
+        "ndof_run": "sym",
+        "elements": 5135,
+        "kpoints": 24,
+        "symmetry_runs": 2,
+        "sec_per_k_model": 21.3,
+        "worker_rss_gb_model": 2.13,
+        "solver_hours_model": 0.0355,
+        "hours_limit": 0.15,
+        "usd_rate_per_h": 0.75,
+        "usd_expected": 0.064,
+        "usd_ceiling": 0.11
+      },
+      "usd_ceiling": 0.11
+    },
+    {
+      "index": 2,
+      "assignments": {
+        "geometry.lattice.a": 450,
+        "geometry.hole.h": 380,
+        "geometry.hole.w": 150
+      },
+      "run_id": "run-f07756d5c6f416450141",
+      "lane": "elastic",
+      "status": "queued",
+      "cached": false,
+      "estimate": {
+        "lane": "elastic",
+        "machine": "c2d-standard-16",
+        "workers": 8,
+        "ndof": 28482,
+        "ndof_run": "sym",
+        "elements": 5685,
+        "kpoints": 24,
+        "symmetry_runs": 2,
+        "sec_per_k_model": 24.3,
+        "worker_rss_gb_model": 2.2,
+        "solver_hours_model": 0.0405,
+        "hours_limit": 0.15,
+        "usd_rate_per_h": 0.75,
+        "usd_expected": 0.068,
+        "usd_ceiling": 0.11
+      },
+      "usd_ceiling": 0.11
+    },
+    {
+      "index": 3,
+      "assignments": {
+        "geometry.lattice.a": 440,
+        "geometry.hole.h": 375,
+        "geometry.hole.w": 150
+      },
+      "run_id": "run-16c323a02e9019b769f0",
+      "lane": "elastic",
+      "status": "queued",
+      "cached": false,
+      "estimate": {
+        "lane": "elastic",
+        "machine": "c2d-standard-16",
+        "workers": 8,
+        "ndof": 27296,
+        "ndof_run": "sym",
+        "elements": 5485,
+        "kpoints": 24,
+        "symmetry_runs": 2,
+        "sec_per_k_model": 22.8,
+        "worker_rss_gb_model": 2.16,
+        "solver_hours_model": 0.0379,
+        "hours_limit": 0.15,
+        "usd_rate_per_h": 0.75,
+        "usd_expected": 0.066,
+        "usd_ceiling": 0.11
+      },
+      "usd_ceiling": 0.11
+    },
+    {
+      "index": 4,
+      "assignments": {
+        "geometry.lattice.a": 460,
+        "geometry.hole.h": 395,
+        "geometry.hole.w": 150
+      },
+      "run_id": "run-c09cb56ea0531929444c",
+      "lane": "elastic",
+      "status": "queued",
+      "cached": false,
+      "estimate": {
+        "lane": "elastic",
+        "machine": "c2d-standard-16",
+        "workers": 8,
+        "ndof": 28406,
+        "ndof_run": "sym",
+        "elements": 5639,
+        "kpoints": 24,
+        "symmetry_runs": 2,
+        "sec_per_k_model": 24.2,
+        "worker_rss_gb_model": 2.19,
+        "solver_hours_model": 0.0404,
+        "hours_limit": 0.15,
+        "usd_rate_per_h": 0.75,
+        "usd_expected": 0.068,
+        "usd_ceiling": 0.11
+      },
+      "usd_ceiling": 0.11
+    },
+    {
+      "index": 5,
+      "assignments": {
+        "geometry.lattice.a": 450,
+        "geometry.hole.h": 380,
+        "geometry.hole.w": 170
+      },
+      "run_id": "run-4a7d7bdb5fefcae04ec9",
+      "lane": "elastic",
+      "status": "queued",
+      "cached": false,
+      "estimate": {
+        "lane": "elastic",
+        "machine": "c2d-standard-16",
+        "workers": 8,
+        "ndof": 27053,
+        "ndof_run": "sym",
+        "elements": 5382,
+        "kpoints": 24,
+        "symmetry_runs": 2,
+        "sec_per_k_model": 22.4,
+        "worker_rss_gb_model": 2.15,
+        "solver_hours_model": 0.0374,
+        "hours_limit": 0.15,
+        "usd_rate_per_h": 0.75,
+        "usd_expected": 0.066,
+        "usd_ceiling": 0.11
+      },
+      "usd_ceiling": 0.11
+    }
+  ],
+  "new_runs": 6,
+  "hours_limit": 0.15,
+  "usd_ceiling": 0.67,
+  "usd_expected": 0.4,
+  "submission_limit_usd": 100,
+  "needs_confirm": false,
+  "month_cap_usd": 300,
+  "month_reserved_usd": 1.0,
+  "month_left_usd": 299.0,
+  "fits_month_cap": true,
+  "cap_basis": "the ceiling fits the headroom",
+  "month_settled_usd": 0.9955,
+  "month_running_usd": 0.0,
+  "month_real_usd": 0.9955,
+  "lane": "elastic",
+  "price_model": "c2d-standard-16 at $0.75/h; ceiling = hours_limit (Batch kills the task there, no retries) x rate, per run",
+  "job": "projects/cloudup-platform-01/locations/us-central1/jobs/ph-api-abby-shield65-20261022232346-f4a9",
+  "usd_reserved": 0.67
+}

@@ -7,17 +7,34 @@ This is the top-level agent context file. All sub-agent files are registered her
 ## DMITRY CLOUD SOFTWARE — HARD RULE (user, 2026-10-19)
 
 The "Dmitry cloud software/service" = the laghai/nanophotonics-cloud solver service (GitHub laghai/nanophotonics-cloud; billed, $50/month cap,
-account <ACCOUNT>). **NEVER use it unless the user explicitly says to, for a specific named run.** No exploratory, follow-up,
+account <ACCOUNT>; caps raised 10/23 to $100 per submission / $300 per month). **NEVER use it unless the user explicitly says to, for a specific named run.** (Applies to the user's OWN agents submitting jobs. Dmitry's team/agents may test and develop on her behalf freely; user 10/19.) No exploratory, follow-up,
 "quick check" or automatic runs. Permission for one run does not extend to any other run.
 - Every file and folder produced by or for a Dmitry-service run must END WITH `_dmitry` (e.g. `runs/dmitry/batch41_dmitry/`, `results_dmitry.csv`),
   and its contents/metadata must state that the run was done on the Dmitry cloud software.
 - Keep Dmitry data in separate folders, never mixed with Lumerical or COMSOL data or catalogs; never merge it into BO datasets, best_devices,
   results_summary tables etc. without labeling it as Dmitry-service data.
 - State the price before any run (the service quotes it) and stay within the user's explicit authorization.
-- Authorized so far: ONLY BO batch 41 (60 nm min feature, 5° sidewall; 4 points from runs/surrogate_explore/batch_41.json), 2026-10-19.
+- Authorized so far (each ONLY when the service can run it; quote the price to the user before submitting):
+  (1) BO batch 41 (60 nm min feature, 5° sidewall; 4 points from runs/surrogate_explore/batch_41.json), 2026-10-19.
+  (2) The FIRST set of gap-confined designs (breathing mode inside the mirror Y+Z+ gap; from the 10/19 gap-cell study),
+      user 2026-10-19 evening. Exactly one batch: freeze its spec as runs/dmitry/gapconf1_dmitry/designs_dmitry.json
+      when it is chosen; later gap-confined batches need new permission.
+  (3) Square-lattice CROSS phonon shield for the best gap-confined device (60nm_w650_d0.086_xi1.79_chi-6.97_gapconf): the shield
+      unit-cell design runs (bands/sweep) AND the full cavity+shield structure runs, user 2026-10-22. Folder runs/dmitry/shield1_dmitry/.
+      Runs so far: sweep1s (12 cells, ~$1, 10/22), sweep2 (6 cells, 65 nm re-design, $0.40 est., 10/23; 2 cells paid but not fetched:
+      a450_h385_w140, a450_h380_w170 -> `npc fetch <run_id>` after re-login, run ids in status2_dmitry.json).
+      Full cavity+shield: now possible via the STRUCTURE route (GDS/polygon input, issue #176, live 10/23 on npc-api-00038+) or the
+      elastic/1 JOB env (own Python/netgen geometry, docs/missions/phononics/FOR-ABBYS-AGENT.md 4b/4c). Still: quote the price first.
 - Status 10/19: the service cannot run batch 41 yet (no cavity resonance task; elastic solver is unit-cell only). User declined an
   optics-only job-lane workaround; instead asked the Dmitry team (GitHub issue on their repo) to build what we use COMSOL for.
+  User (10/19): will submit batch 41 once the service does the full cavity suite (optics + mechanics + g0); account access verified (npc whoami, $0).
   Nothing has been submitted. gcloud installed at ~/google-cloud-sdk (user logs in with `gcloud auth login <account>`).
+- Status 10/23: talk to Dmitry's agents through GitHub issues on laghai/nanophotonics-cloud with `~/.local/bin/gh` (logged in as ajmstein124);
+  they reply on the thread (user pastes the emails, or read with `gh issue view N -R laghai/nanophotonics-cloud --comments`). Open threads:
+  #163 (beam + anchor + shield), #176 (GDS / arbitrary geometry: structure route + elastic/1 job env, live; plain-anchor COMSOL reproduced).
+  Posting there is outward-facing: only what the user asked to communicate. Sign-in: Stanford forces gcloud re-auth every so often
+  ("Reauthentication failed ... non-interactive") -> user runs `gcloud auth login <ACCOUNT>`; fix requested = personal Google
+  account or a service-account key admitted by the API (never print keys/tokens).
 
 ## Project Overview
 
@@ -271,7 +288,9 @@ Python: `C:\Program Files\ANSYS Inc\v252\Lumerical\python-3.13.1\python.exe`
      **DONE 22:49:** base shape only (bug: shapes bracket at a0 − 8 → center holes < 80 nm under lock_x → 0 shapes). 619 line a 184.3/188.3/192.5
      for d .10/.13/.16; Q ~2.9e6/3.3e6/1.3e6; breathing 10.04–10.07 GHz. **RUNNING 22:55: `run_w700_lockx_shapes.py`** (da = −6 → bracket upward;
      5 (ξ,χ) × d .10/.13). Pipeline.shapes accepts negative da for upward brackets.
-   - **Result summaries: `best_devices/`** (`python best_devices/make_best_devices.py`, 10/16): per final device summary.md, modes, spectra, mirror bands, sweeps.
+   - **Result summaries: `best_devices/`** (reorganized 10/20, user): top level = GAP-CONFINED devices only (breathing mode inside the mirror Y+Z+ gap),
+     `python best_devices/make_gapconf_devices.py` (best 60 nm: 60nm_w650_d0.086_xi1.79_chi-6.97_gapconf; 80 nm: none yet). Older devices whose breathing
+     mode sits ABOVE the gap: `best_devices/not_gap_confined/` (`python best_devices/not_gap_confined/make_best_devices.py`, 10/16).
      Finding: in BOTH finals the breathing mode sits ABOVE the mirror cell's Y+Z+ quasi-gap (5.21–8.77 GHz at w650/a190.3; 5.47–9.01 at w700/a182.8),
      overlapping the 2nd Y+Z+ band -> not gap-protected; Q_m (mech PML) is the open question.
 9. **Breathing-mode identification** (all three needed; `cavity_pipeline.breathing_index`, `scripts/cavity_designs.py`): localization ≥ 0.8;
@@ -326,6 +345,18 @@ Python: `C:\Program Files\ANSYS Inc\v252\Lumerical\python-3.13.1\python.exe`
    **Memory: ONE full-thickness (sidewall) model at a time** on jv-adamantoise (95 GB visible; 2 at once → 'Failed to assemble the matrices'
    (out of memory) or a multi-hour thrash in the optical eigensolve, 10/19). Run all angled batches as ONE chained stream (stream.py SEQ 32 41 31 42).
    g0 is now evaluated only for breathing-like modes (loc > 0.8 AND B > 0.5).
+16. **Cross phonon shield** (`runs/shield_619`, user 10/22): shield cell from the Dmitry cloud (runs/dmitry/shield1_dmitry; a 450 h 390 w 140 f 20,
+   gap 9.40–11.47 GHz, COMSOL check `cross_cell_bands.py`); full beam + anchor pad + shield + PML model `build_shield_cavity.py` (remote, scp by hand),
+   `run_cases.py` reads `cases.json` (resumable); Mac figures `plot_shield.py --pull`; PDF `docs/shield_report/make_shield_report.py` (+ findings.md).
+   Gapconf best: Q_m 1.65e7 (no shield, saturates ≥ 4 mirror cells) → 2.8e9 with 4 periods (PML/mesh converged; 2 periods 5.6e8).
+   **Shield min feature 65 nm (user 10/22):** bridges a−h ≥ 65 AND the strip between the first cross column and the trench edge ≥ 65
+   (the a450/h390 cell has 60 nm bridges and a 30 nm edge strip -> superseded). Re-design: runs/dmitry/shield1_dmitry/sweep2_dmitry.json
+   (approved + run 10/23): winner **a 460, h 395, w 150, fillet 20 (bridge 65) -> gap 9.46-11.45 GHz**; full structure uses x_off 35
+   (edge strip 67.5 nm), COMSOL cases *_shield65 / *_noshield65 / nm10_shield65_pml3k (cases.json), cell check cross_a460_h395_w150.npz.
+   GDS: `python best_devices/make_gds.py` (fab layouts of every tracked device, 65 nm asserted on the shield) and
+   `python runs/shield_619/make_ref_gds.py` (exact COMSOL geometries incl. PML layer 3 + loc box layer 4, for the Dmitry cross-check).
+   plot_shield.py makes both variants ('' = a450 60 nm, '65'); report section 6b reads qm_summary65.json.
+   Never name a COMSOL parameter `w` (= z displacement; old build_cavity_model does — check real(w) exports there). gh CLI: ~/.local/bin/gh (ajmstein124).
 **Min feature:** 60 nm (user) and 80 nm, one final device each. 80 nm cell hy/w .70 (rails ≥ 82 nm); taper freedom at 80 nm shrinks with a.
 **Figures:** g0 kept OUT of figures (user); NO "me"/"Abby"/"ours" labels on own results, EXCEPT figures that directly compare with Oh (Hyunseok) 2026, where own results are labeled "me" (user 10/16); few words, American spelling. plot_fields.py: pass `dev=` (empty title) for no prefix.
 **Ideas pending (user):** even-hole (bridge-centered) cavity so optical and breathing-strain maxima coincide at x = 0 (now both peak in the first
@@ -373,6 +404,7 @@ Sub-agent files live in `agents/`. Each handles a specific domain.
 | `agents/comsol_specialist.md` | COMSOL/mph simulation setup, Floquet BCs, eigensolvers | Active |
 | `agents/phononic_specialist.md` | Phononic crystal design, gap analysis, parameter space | Active |
 | `agents/photonic_specialist.md` | Photonic crystal design, SnV at 619 nm, legume GME | Initialized (not yet used) |
+| `agents/lumerical_specialist.md` | Lumerical FDTD: machines, lumapi rules, cavities, bands, lumopt. **Shared** symlink to `~/Documents/shared_agents/` (edit there) | Active |
 | `agents/codesign_mediator.md` | Phoxonic co-design, photonic/phononic conflict resolution | Active |
 
 ---
@@ -521,7 +553,7 @@ Material override: use the pattern in **Material Override Pattern** above. The o
 
 ## Infra Notes
 
-**GPU computer** (user's name; 2026-10-16): Tailscale host `<GPU_HOSTNAME>`, **<GPU_HOST>**, `ssh -i ~/.ssh/id_ed25519 <USER>@<GPU_HOST>` (key auth works; key in C:\ProgramData\ssh\administrators_authorized_keys, <USER> is admin). Windows 11, AMD Ryzen 9 9950X3D (16 cores), 126 GB RAM, RTX 5070 Ti 16 GB. Disk tight: C 19 GB, G/H 18 GB free. Installed: Ansys v251 incl. **Lumerical** (C:\Program Files\ANSYS Inc\v251\Lumerical; license/python not checked yet), Docker, WSL, Git, GitHub CLI, MS-MPI; NO COMSOL, NO real Python (only the WindowsApps stub; `py` absent). Also has a saved lab-tailnet profile (`<ACCOUNT>`); only one tailnet active at a time (`tailscale switch`). **Used for Lumerical verification** (v251 FDTD, GPU express mode, `lum_run.py --gpu`; work dir C:\Users\<USER>\Documents\optomechanics\lumerical; driver `best_devices/add_lumerical.py`).
+**GPU computer** (user's name; 2026-10-16): Tailscale host `<GPU_HOSTNAME>`, **<GPU_HOST>**, `ssh -i ~/.ssh/id_ed25519 <USER>@<GPU_HOST>` (key auth works; key in C:\ProgramData\ssh\administrators_authorized_keys, <USER> is admin). Windows 11, AMD Ryzen 9 9950X3D (16 cores), 126 GB RAM, RTX 5070 Ti 16 GB. Disk tight: C 19 GB, G/H 18 GB free. Installed: Ansys v251 incl. **Lumerical** (C:\Program Files\ANSYS Inc\v251\Lumerical; license/python not checked yet), Docker, WSL, Git, GitHub CLI, MS-MPI; NO COMSOL, NO real Python (only the WindowsApps stub; `py` absent). Also has a saved lab-tailnet profile (`<ACCOUNT>`); only one tailnet active at a time (`tailscale switch`). **Used for Lumerical verification** (v251 FDTD, GPU express mode, `lum_run.py --gpu`; work dir C:\Users\<USER>\Documents\optomechanics\lumerical; driver `best_devices/not_gap_confined/add_lumerical.py`).
 
 **Remote detached launch**: `Start-Process -WindowStyle Hidden` fails silently on this machine (0-byte logs). `wmic` not available (removed in newer Windows 11). **Use `Invoke-CimMethod Win32_Process Create`** — creates a process completely outside any job object, truly survives SSH disconnect. This is implemented in `remote_runner.py`'s default detach mode.
 

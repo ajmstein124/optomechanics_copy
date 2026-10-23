@@ -1,0 +1,96 @@
+  sym k 5: 21 s, ndof 34731, worker peak RSS 1.03 GB
+[   24.3s] sym k 5/24 done
+  sym k 7: 21 s, ndof 34731, worker peak RSS 1.03 GB
+[   24.8s] sym k 7/24 done
+  sym k 8: 21 s, ndof 34731, worker peak RSS 1.03 GB
+[   24.8s] sym k 8/24 done
+  sym k 1: 21 s, ndof 34731, worker peak RSS 1.03 GB
+[   24.8s] sym k 1/24 done
+  sym k 3: 21 s, ndof 34731, worker peak RSS 1.03 GB
+[   25.1s] sym k 3/24 done
+  sym k 6: 22 s, ndof 34731, worker peak RSS 1.03 GB
+[   25.4s] sym k 6/24 done
+  sym k 4: 22 s, ndof 34731, worker peak RSS 1.03 GB
+[   25.4s] sym k 4/24 done
+  sym k 2: 22 s, ndof 34731, worker peak RSS 1.03 GB
+[   25.5s] sym k 2/24 done
+  sym k 9: 21 s, ndof 34731, worker peak RSS 1.06 GB
+[   45.6s] sym k 9/24 done
+  sym k 12: 21 s, ndof 34731, worker peak RSS 1.06 GB
+[   45.9s] sym k 12/24 done
+  sym k 10: 21 s, ndof 34731, worker peak RSS 1.06 GB
+[   45.9s] sym k 10/24 done
+  sym k 14: 21 s, ndof 34731, worker peak RSS 1.06 GB
+[   46.2s] sym k 14/24 done
+  sym k 11: 22 s, ndof 34731, worker peak RSS 1.05 GB
+[   46.7s] sym k 11/24 done
+  sym k 16: 21 s, ndof 34731, worker peak RSS 1.06 GB
+[   46.9s] sym k 16/24 done
+  sym k 13: 22 s, ndof 34731, worker peak RSS 1.06 GB
+[   47.0s] sym k 13/24 done
+  sym k 15: 22 s, ndof 34731, worker peak RSS 1.06 GB
+[   47.1s] sym k 15/24 done
+  sym k 17: 20 s, ndof 34731, worker peak RSS 1.06 GB
+[   65.9s] sym k 17/24 done
+  sym k 18: 21 s, ndof 34731, worker peak RSS 1.06 GB
+[   67.2s] sym k 18/24 done
+  sym k 20: 21 s, ndof 34731, worker peak RSS 1.06 GB
+[   67.4s] sym k 20/24 done
+  sym k 19: 22 s, ndof 34731, worker peak RSS 1.06 GB
+[   67.5s] sym k 19/24 done
+  sym k 21: 21 s, ndof 34731, worker peak RSS 1.06 GB
+[   67.9s] sym k 21/24 done
+  sym k 23: 21 s, ndof 34731, worker peak RSS 1.09 GB
+[   68.2s] sym k 23/24 done
+  sym k 24: 21 s, ndof 34731, worker peak RSS 1.09 GB
+[   68.3s] sym k 24/24 done
+  sym k 22: 21 s, ndof 34731, worker peak RSS 1.09 GB
+[   68.5s] sym k 22/24 done
+  antisym k 1: 19 s, ndof 32370, worker peak RSS 1.06 GB
+[   85.9s] antisym k 1/24 done
+  antisym k 3: 19 s, ndof 32370, worker peak RSS 1.06 GB
+[   87.3s] antisym k 3/24 done
+  antisym k 2: 19 s, ndof 32370, worker peak RSS 1.06 GB
+[   87.5s] antisym k 2/24 done
+  antisym k 6: 19 s, ndof 32370, worker peak RSS 1.09 GB
+[   88.1s] antisym k 6/24 done
+  antisym k 8: 19 s, ndof 32370, worker peak RSS 1.09 GB
+[   88.1s] antisym k 8/24 done
+  antisym k 5: 20 s, ndof 32370, worker peak RSS 1.06 GB
+[   88.3s] antisym k 5/24 done
+  antisym k 4: 20 s, ndof 32370, worker peak RSS 1.06 GB
+[   88.4s] antisym k 4/24 done
+  antisym k 7: 20 s, ndof 32370, worker peak RSS 1.09 GB
+[   88.7s] antisym k 7/24 done
+  antisym k 9: 19 s, ndof 32370, worker peak RSS 1.06 GB
+[  105.0s] antisym k 9/24 done
+  antisym k 10: 20 s, ndof 32370, worker peak RSS 1.06 GB
+[  107.0s] antisym k 10/24 done
+  antisym k 11: 20 s, ndof 32370, worker peak RSS 1.06 GB
+[  107.0s] antisym k 11/24 done
+  antisym k 13: 19 s, ndof 32370, worker peak RSS 1.09 GB
+[  107.5s] antisym k 13/24 done
+  antisym k 15: 19 s, ndof 32370, worker peak RSS 1.06 GB
+[  107.5s] antisym k 15/24 done
+  antisym k 16: 19 s, ndof 32370, worker peak RSS 1.09 GB
+[  107.7s] antisym k 16/24 done
+  antisym k 12: 20 s, ndof 32370, worker peak RSS 1.09 GB
+[  107.9s] antisym k 12/24 done
+  antisym k 14: 20 s, ndof 32370, worker peak RSS 1.06 GB
+[  108.0s] antisym k 14/24 done
+  antisym k 17: 19 s, ndof 32370, worker peak RSS 1.06 GB
+[  124.0s] antisym k 17/24 done
+  antisym k 18: 19 s, ndof 32370, worker peak RSS 1.06 GB
+[  126.1s] antisym k 18/24 done
+  antisym k 19: 19 s, ndof 32370, worker peak RSS 1.06 GB
+[  126.5s] antisym k 19/24 done
+  antisym k 21: 19 s, ndof 32370, worker peak RSS 1.06 GB
+[  126.6s] antisym k 21/24 done
+  antisym k 22: 19 s, ndof 32370, worker peak RSS 1.09 GB
+[  127.1s] antisym k 22/24 done
+  antisym k 24: 19 s, ndof 32370, worker peak RSS 1.06 GB
+[  127.1s] antisym k 24/24 done
+  antisym k 20: 20 s, ndof 32370, worker peak RSS 1.09 GB
+[  127.4s] antisym k 20/24 done
+  antisym k 23: 20 s, ndof 32370, worker peak RSS 1.09 GB
+[  127.4s] antisym k 23/24 done

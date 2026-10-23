@@ -1,0 +1,125 @@
+{
+ "note": "FROZEN SPEC for a run on the DMITRY CLOUD SOFTWARE (laghai/nanophotonics-cloud). Authorized by the user 2026-10-19 ('the first set of gap-confined designs'), one batch only, to run once the service supports full cavities (optics + mechanics + g0); quote the price to the user before submitting. NOT YET SUBMITTED. COMSOL reference results: runs/surrogate_explore/gapconf/<tag>/data/final.npz (COMSOL data, not Dmitry data). Vertical walls, 1/8 model, M 10, n_mirror 10, t 120 nm, diamond E 1050 GPa nu 0.07 rho 3500 n 2.41.",
+ "frozen": "2026-10-20",
+ "designs": [
+  {
+   "tag": "w650_m186_c455_d086",
+   "cfg": {
+    "a_m": 189.5,
+    "w": 650,
+    "t": 120,
+    "hx_m": 75.814,
+    "hy_m": 390.0,
+    "M": 10,
+    "n_mirror": 10,
+    "d": 0.086,
+    "eta": 1.0,
+    "xi": 1.79,
+    "chi": -6.97,
+    "pad_x": 1000
+   }
+  },
+  {
+   "tag": "w650_m186_c455_d118",
+   "cfg": {
+    "a_m": 195.4,
+    "w": 650,
+    "t": 120,
+    "hx_m": 78.174,
+    "hy_m": 390.0,
+    "M": 10,
+    "n_mirror": 10,
+    "d": 0.118,
+    "eta": 1.0,
+    "xi": 1.0,
+    "chi": -4.59,
+    "pad_x": 1000
+   }
+  },
+  {
+   "tag": "w650_m192_hy66_c455_d146",
+   "cfg": {
+    "a_m": 201.2,
+    "w": 650,
+    "t": 120,
+    "hx_m": 80.498,
+    "hy_m": 429.0,
+    "M": 10,
+    "n_mirror": 10,
+    "d": 0.146,
+    "eta": 1.0,
+    "xi": 1.2,
+    "chi": -2.46,
+    "pad_x": 1000
+   }
+  },
+  {
+   "tag": "w700_m186_c420_d118",
+   "cfg": {
+    "a_m": 191.8,
+    "w": 700,
+    "t": 120,
+    "hx_m": 76.707,
+    "hy_m": 420.0,
+    "M": 10,
+    "n_mirror": 10,
+    "d": 0.118,
+    "eta": 1.0,
+    "xi": 2.22,
+    "chi": -2.73,
+    "pad_x": 1000
+   }
+  },
+  {
+   "tag": "w700_m186_c490_d118",
+   "cfg": {
+    "a_m": 194.2,
+    "w": 700,
+    "t": 120,
+    "hx_m": 77.677,
+    "hy_m": 420.0,
+    "M": 10,
+    "n_mirror": 10,
+    "d": 0.118,
+    "eta": 1.0,
+    "xi": 1.0,
+    "chi": -4.59,
+    "pad_x": 1000
+   }
+  },
+  {
+   "tag": "w700_m192_c420_d146",
+   "cfg": {
+    "a_m": 197.1,
+    "w": 700,
+    "t": 120,
+    "hx_m": 78.847,
+    "hy_m": 420.0,
+    "M": 10,
+    "n_mirror": 10,
+    "d": 0.146,
+    "eta": 1.0,
+    "xi": 1.57,
+    "chi": -1.93,
+    "pad_x": 1000
+   }
+  },
+  {
+   "tag": "w700_m198_c420_d172",
+   "cfg": {
+    "a_m": 202.3,
+    "w": 700,
+    "t": 120,
+    "hx_m": 80.939,
+    "hy_m": 420.0,
+    "M": 10,
+    "n_mirror": 10,
+    "d": 0.172,
+    "eta": 1.0,
+    "xi": 1.15,
+    "chi": -1.41,
+    "pad_x": 1000
+   }
+  }
+ ]
+}

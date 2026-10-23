@@ -262,3 +262,10 @@ returns 0 points via setInterpolationCoordinates -> use CutPlane dataset + Data 
   `system()` and `rm()`; detached launch there via a .bat + Invoke-CimMethod (inline cmd quoting breaks).
 
 > **Dmitry cloud software rule (user, 2026-10-19):** never use the Dmitry cloud solver service (laghai/nanophotonics-cloud) without explicit per-run permission from the user. All its files/folders end in `_dmitry`, state that they were run on the Dmitry cloud software, and are kept separate from Lumerical/COMSOL data. See CLAUDE.md.
+
+## Anchor + shield model gotchas (runs/shield_619/build_shield_cavity.py, 2026-10-22)
+- Never name a parameter `w` (it is the z displacement → "Inconsistent unit"); avoid `t` in expressions that may be read as time.
+- CutPlane `quickz` takes a plain number (nm), not an expression.
+- PML: COMSOL PML coordinate system with node defaults; slab Block layers of d_pml on +x/+y; mesh FreeTet hmax beam t/5, slab 30 nm, PML 60 nm.
+- Save results (npz) BEFORE field exports, so an export error doesn't lose a solve. Modules imported by a running job don't see later edits;
+  scp build_shield_cavity.py by hand (remote_runner uploads only the launched script + sibling json).

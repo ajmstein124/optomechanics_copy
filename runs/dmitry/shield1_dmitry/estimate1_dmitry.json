@@ -1,0 +1,1097 @@
+{
+  "sweep_id": "sweep-2d5c46cdff30afb7a44c",
+  "runs": [
+    {
+      "index": 0,
+      "assignments": {
+        "geometry.lattice.a": 350,
+        "geometry.hole.h": 290,
+        "geometry.hole.w": 70
+      },
+      "run_id": "run-a1222e19600d48405191",
+      "lane": "elastic",
+      "status": "unknown",
+      "cached": false,
+      "estimate": {
+        "lane": "elastic",
+        "machine": "c2d-standard-16",
+        "workers": 8,
+        "ndof": 30393,
+        "ndof_run": "sym",
+        "elements": 6191,
+        "kpoints": 24,
+        "symmetry_runs": 2,
+        "sec_per_k_model": 26.9,
+        "worker_rss_gb_model": 2.26,
+        "solver_hours_model": 0.0448,
+        "hours_limit": 0.15,
+        "usd_rate_per_h": 0.75,
+        "usd_expected": 0.071,
+        "usd_ceiling": 0.11
+      },
+      "usd_ceiling": 0.11
+    },
+    {
+      "index": 1,
+      "assignments": {
+        "geometry.lattice.a": 350,
+        "geometry.hole.h": 290,
+        "geometry.hole.w": 100
+      },
+      "run_id": "run-e8974a5c6bc91873beff",
+      "lane": "elastic",
+      "status": "unknown",
+      "cached": false,
+      "estimate": {
+        "lane": "elastic",
+        "machine": "c2d-standard-16",
+        "workers": 8,
+        "ndof": 27780,
+        "ndof_run": "sym",
+        "elements": 5649,
+        "kpoints": 24,
+        "symmetry_runs": 2,
+        "sec_per_k_model": 23.4,
+        "worker_rss_gb_model": 2.17,
+        "solver_hours_model": 0.039,
+        "hours_limit": 0.15,
+        "usd_rate_per_h": 0.75,
+        "usd_expected": 0.067,
+        "usd_ceiling": 0.11
+      },
+      "usd_ceiling": 0.11
+    },
+    {
+      "index": 2,
+      "assignments": {
+        "geometry.lattice.a": 350,
+        "geometry.hole.h": 290,
+        "geometry.hole.w": 140
+      },
+      "run_id": "run-8fa7eec0bfae7e0ed4db",
+      "lane": "elastic",
+      "status": "unknown",
+      "cached": false,
+      "estimate": {
+        "lane": "elastic",
+        "machine": "c2d-standard-16",
+        "workers": 8,
+        "ndof": 26461,
+        "ndof_run": "sym",
+        "elements": 5392,
+        "kpoints": 24,
+        "symmetry_runs": 2,
+        "sec_per_k_model": 21.7,
+        "worker_rss_gb_model": 2.13,
+        "solver_hours_model": 0.0362,
+        "hours_limit": 0.15,
+        "usd_rate_per_h": 0.75,
+        "usd_expected": 0.065,
+        "usd_ceiling": 0.11
+      },
+      "usd_ceiling": 0.11
+    },
+    {
+      "index": 3,
+      "assignments": {
+        "geometry.lattice.a": 350,
+        "geometry.hole.h": 265,
+        "geometry.hole.w": 70
+      },
+      "run_id": "run-e3f662f0a64e9af271ab",
+      "lane": "elastic",
+      "status": "unknown",
+      "cached": false,
+      "estimate": {
+        "lane": "elastic",
+        "machine": "c2d-standard-16",
+        "workers": 8,
+        "ndof": 29733,
+        "ndof_run": "sym",
+        "elements": 6093,
+        "kpoints": 24,
+        "symmetry_runs": 2,
+        "sec_per_k_model": 26.0,
+        "worker_rss_gb_model": 2.23,
+        "solver_hours_model": 0.0433,
+        "hours_limit": 0.15,
+        "usd_rate_per_h": 0.75,
+        "usd_expected": 0.07,
+        "usd_ceiling": 0.11
+      },
+      "usd_ceiling": 0.11
+    },
+    {
+      "index": 4,
+      "assignments": {
+        "geometry.lattice.a": 350,
+        "geometry.hole.h": 265,
+        "geometry.hole.w": 100
+      },
+      "run_id": "run-0c2afedc4327c7550fd1",
+      "lane": "elastic",
+      "status": "unknown",
+      "cached": false,
+      "estimate": {
+        "lane": "elastic",
+        "machine": "c2d-standard-16",
+        "workers": 8,
+        "ndof": 28589,
+        "ndof_run": "sym",
+        "elements": 5879,
+        "kpoints": 24,
+        "symmetry_runs": 2,
+        "sec_per_k_model": 24.5,
+        "worker_rss_gb_model": 2.2,
+        "solver_hours_model": 0.0408,
+        "hours_limit": 0.15,
+        "usd_rate_per_h": 0.75,
+        "usd_expected": 0.068,
+        "usd_ceiling": 0.11
+      },
+      "usd_ceiling": 0.11
+    },
+    {
+      "index": 5,
+      "assignments": {
+        "geometry.lattice.a": 350,
+        "geometry.hole.h": 265,
+        "geometry.hole.w": 140
+      },
+      "run_id": "run-0eb67392b5e9b6d4c52a",
+      "lane": "elastic",
+      "status": "unknown",
+      "cached": false,
+      "estimate": {
+        "lane": "elastic",
+        "machine": "c2d-standard-16",
+        "workers": 8,
+        "ndof": 25012,
+        "ndof_run": "sym",
+        "elements": 5117,
+        "kpoints": 24,
+        "symmetry_runs": 2,
+        "sec_per_k_model": 19.9,
+        "worker_rss_gb_model": 2.09,
+        "solver_hours_model": 0.0331,
+        "hours_limit": 0.15,
+        "usd_rate_per_h": 0.75,
+        "usd_expected": 0.062,
+        "usd_ceiling": 0.11
+      },
+      "usd_ceiling": 0.11
+    },
+    {
+      "index": 6,
+      "assignments": {
+        "geometry.lattice.a": 350,
+        "geometry.hole.h": 235,
+        "geometry.hole.w": 70
+      },
+      "run_id": "run-cd1bed72043ae9f3c10a",
+      "lane": "elastic",
+      "status": "unknown",
+      "cached": false,
+      "estimate": {
+        "lane": "elastic",
+        "machine": "c2d-standard-16",
+        "workers": 8,
+        "ndof": 29955,
+        "ndof_run": "sym",
+        "elements": 6170,
+        "kpoints": 24,
+        "symmetry_runs": 2,
+        "sec_per_k_model": 26.3,
+        "worker_rss_gb_model": 2.24,
+        "solver_hours_model": 0.0438,
+        "hours_limit": 0.15,
+        "usd_rate_per_h": 0.75,
+        "usd_expected": 0.07,
+        "usd_ceiling": 0.11
+      },
+      "usd_ceiling": 0.11
+    },
+    {
+      "index": 7,
+      "assignments": {
+        "geometry.lattice.a": 350,
+        "geometry.hole.h": 235,
+        "geometry.hole.w": 100
+      },
+      "run_id": "run-55e697cf43f864f4a8ba",
+      "lane": "elastic",
+      "status": "unknown",
+      "cached": false,
+      "estimate": {
+        "lane": "elastic",
+        "machine": "c2d-standard-16",
+        "workers": 8,
+        "ndof": 28664,
+        "ndof_run": "sym",
+        "elements": 5914,
+        "kpoints": 24,
+        "symmetry_runs": 2,
+        "sec_per_k_model": 24.6,
+        "worker_rss_gb_model": 2.2,
+        "solver_hours_model": 0.0409,
+        "hours_limit": 0.15,
+        "usd_rate_per_h": 0.75,
+        "usd_expected": 0.068,
+        "usd_ceiling": 0.11
+      },
+      "usd_ceiling": 0.11
+    },
+    {
+      "index": 8,
+      "assignments": {
+        "geometry.lattice.a": 350,
+        "geometry.hole.h": 235,
+        "geometry.hole.w": 140
+      },
+      "run_id": "run-44a194e3056290ac571d",
+      "lane": "elastic",
+      "status": "unknown",
+      "cached": false,
+      "estimate": {
+        "lane": "elastic",
+        "machine": "c2d-standard-16",
+        "workers": 8,
+        "ndof": 24718,
+        "ndof_run": "sym",
+        "elements": 5084,
+        "kpoints": 24,
+        "symmetry_runs": 2,
+        "sec_per_k_model": 19.5,
+        "worker_rss_gb_model": 2.08,
+        "solver_hours_model": 0.0325,
+        "hours_limit": 0.15,
+        "usd_rate_per_h": 0.75,
+        "usd_expected": 0.062,
+        "usd_ceiling": 0.11
+      },
+      "usd_ceiling": 0.11
+    },
+    {
+      "index": 9,
+      "assignments": {
+        "geometry.lattice.a": 450,
+        "geometry.hole.h": 390,
+        "geometry.hole.w": 70
+      },
+      "run_id": "run-e4119e88f9d3895016e9",
+      "lane": "elastic",
+      "status": "unknown",
+      "cached": false,
+      "estimate": {
+        "lane": "elastic",
+        "machine": "c2d-standard-16",
+        "workers": 8,
+        "ndof": 31648,
+        "ndof_run": "sym",
+        "elements": 6307,
+        "kpoints": 24,
+        "symmetry_runs": 2,
+        "sec_per_k_model": 28.6,
+        "worker_rss_gb_model": 2.3,
+        "solver_hours_model": 0.0477,
+        "hours_limit": 0.15,
+        "usd_rate_per_h": 0.75,
+        "usd_expected": 0.073,
+        "usd_ceiling": 0.11
+      },
+      "usd_ceiling": 0.11
+    },
+    {
+      "index": 10,
+      "assignments": {
+        "geometry.lattice.a": 450,
+        "geometry.hole.h": 390,
+        "geometry.hole.w": 100
+      },
+      "run_id": "run-15a4725f31d047e1783d",
+      "lane": "elastic",
+      "status": "unknown",
+      "cached": false,
+      "estimate": {
+        "lane": "elastic",
+        "machine": "c2d-standard-16",
+        "workers": 8,
+        "ndof": 29072,
+        "ndof_run": "sym",
+        "elements": 5755,
+        "kpoints": 24,
+        "symmetry_runs": 2,
+        "sec_per_k_model": 25.1,
+        "worker_rss_gb_model": 2.21,
+        "solver_hours_model": 0.0418,
+        "hours_limit": 0.15,
+        "usd_rate_per_h": 0.75,
+        "usd_expected": 0.069,
+        "usd_ceiling": 0.11
+      },
+      "usd_ceiling": 0.11
+    },
+    {
+      "index": 11,
+      "assignments": {
+        "geometry.lattice.a": 450,
+        "geometry.hole.h": 390,
+        "geometry.hole.w": 140
+      },
+      "run_id": "run-a77d22bb0348527864c8",
+      "lane": "elastic",
+      "status": "unknown",
+      "cached": false,
+      "estimate": {
+        "lane": "elastic",
+        "machine": "c2d-standard-16",
+        "workers": 8,
+        "ndof": 26757,
+        "ndof_run": "sym",
+        "elements": 5238,
+        "kpoints": 24,
+        "symmetry_runs": 2,
+        "sec_per_k_model": 22.1,
+        "worker_rss_gb_model": 2.14,
+        "solver_hours_model": 0.0368,
+        "hours_limit": 0.15,
+        "usd_rate_per_h": 0.75,
+        "usd_expected": 0.065,
+        "usd_ceiling": 0.11
+      },
+      "usd_ceiling": 0.11
+    },
+    {
+      "index": 12,
+      "assignments": {
+        "geometry.lattice.a": 450,
+        "geometry.hole.h": 365,
+        "geometry.hole.w": 70
+      },
+      "run_id": "run-a0c227c56b3bf181b75e",
+      "lane": "elastic",
+      "status": "unknown",
+      "cached": false,
+      "estimate": {
+        "lane": "elastic",
+        "machine": "c2d-standard-16",
+        "workers": 8,
+        "ndof": 32295,
+        "ndof_run": "sym",
+        "elements": 6478,
+        "kpoints": 24,
+        "symmetry_runs": 2,
+        "sec_per_k_model": 29.5,
+        "worker_rss_gb_model": 2.32,
+        "solver_hours_model": 0.0492,
+        "hours_limit": 0.15,
+        "usd_rate_per_h": 0.75,
+        "usd_expected": 0.074,
+        "usd_ceiling": 0.11
+      },
+      "usd_ceiling": 0.11
+    },
+    {
+      "index": 13,
+      "assignments": {
+        "geometry.lattice.a": 450,
+        "geometry.hole.h": 365,
+        "geometry.hole.w": 100
+      },
+      "run_id": "run-5d2739737154509655a1",
+      "lane": "elastic",
+      "status": "unknown",
+      "cached": false,
+      "estimate": {
+        "lane": "elastic",
+        "machine": "c2d-standard-16",
+        "workers": 8,
+        "ndof": 31278,
+        "ndof_run": "sym",
+        "elements": 6291,
+        "kpoints": 24,
+        "symmetry_runs": 2,
+        "sec_per_k_model": 28.1,
+        "worker_rss_gb_model": 2.29,
+        "solver_hours_model": 0.0469,
+        "hours_limit": 0.15,
+        "usd_rate_per_h": 0.75,
+        "usd_expected": 0.073,
+        "usd_ceiling": 0.11
+      },
+      "usd_ceiling": 0.11
+    },
+    {
+      "index": 14,
+      "assignments": {
+        "geometry.lattice.a": 450,
+        "geometry.hole.h": 365,
+        "geometry.hole.w": 140
+      },
+      "run_id": "run-3ef2d28d28c55e0a74fb",
+      "lane": "elastic",
+      "status": "unknown",
+      "cached": false,
+      "estimate": {
+        "lane": "elastic",
+        "machine": "c2d-standard-16",
+        "workers": 8,
+        "ndof": 28133,
+        "ndof_run": "sym",
+        "elements": 5571,
+        "kpoints": 24,
+        "symmetry_runs": 2,
+        "sec_per_k_model": 23.9,
+        "worker_rss_gb_model": 2.18,
+        "solver_hours_model": 0.0398,
+        "hours_limit": 0.15,
+        "usd_rate_per_h": 0.75,
+        "usd_expected": 0.067,
+        "usd_ceiling": 0.11
+      },
+      "usd_ceiling": 0.11
+    },
+    {
+      "index": 15,
+      "assignments": {
+        "geometry.lattice.a": 450,
+        "geometry.hole.h": 335,
+        "geometry.hole.w": 70
+      },
+      "run_id": "run-e8c20510111d92c812a2",
+      "lane": "elastic",
+      "status": "unknown",
+      "cached": false,
+      "estimate": {
+        "lane": "elastic",
+        "machine": "c2d-standard-16",
+        "workers": 8,
+        "ndof": 31597,
+        "ndof_run": "sym",
+        "elements": 6349,
+        "kpoints": 24,
+        "symmetry_runs": 2,
+        "sec_per_k_model": 28.6,
+        "worker_rss_gb_model": 2.3,
+        "solver_hours_model": 0.0476,
+        "hours_limit": 0.15,
+        "usd_rate_per_h": 0.75,
+        "usd_expected": 0.073,
+        "usd_ceiling": 0.11
+      },
+      "usd_ceiling": 0.11
+    },
+    {
+      "index": 16,
+      "assignments": {
+        "geometry.lattice.a": 450,
+        "geometry.hole.h": 335,
+        "geometry.hole.w": 100
+      },
+      "run_id": "run-cc683f74def0e3bad71a",
+      "lane": "elastic",
+      "status": "unknown",
+      "cached": false,
+      "estimate": {
+        "lane": "elastic",
+        "machine": "c2d-standard-16",
+        "workers": 8,
+        "ndof": 31159,
+        "ndof_run": "sym",
+        "elements": 6247,
+        "kpoints": 24,
+        "symmetry_runs": 2,
+        "sec_per_k_model": 27.9,
+        "worker_rss_gb_model": 2.28,
+        "solver_hours_model": 0.0466,
+        "hours_limit": 0.15,
+        "usd_rate_per_h": 0.75,
+        "usd_expected": 0.072,
+        "usd_ceiling": 0.11
+      },
+      "usd_ceiling": 0.11
+    },
+    {
+      "index": 17,
+      "assignments": {
+        "geometry.lattice.a": 450,
+        "geometry.hole.h": 335,
+        "geometry.hole.w": 140
+      },
+      "run_id": "run-5ec6261cc425cfcf6690",
+      "lane": "elastic",
+      "status": "unknown",
+      "cached": false,
+      "estimate": {
+        "lane": "elastic",
+        "machine": "c2d-standard-16",
+        "workers": 8,
+        "ndof": 29838,
+        "ndof_run": "sym",
+        "elements": 5939,
+        "kpoints": 24,
+        "symmetry_runs": 2,
+        "sec_per_k_model": 26.1,
+        "worker_rss_gb_model": 2.24,
+        "solver_hours_model": 0.0435,
+        "hours_limit": 0.15,
+        "usd_rate_per_h": 0.75,
+        "usd_expected": 0.07,
+        "usd_ceiling": 0.11
+      },
+      "usd_ceiling": 0.11
+    },
+    {
+      "index": 18,
+      "assignments": {
+        "geometry.lattice.a": 550,
+        "geometry.hole.h": 490,
+        "geometry.hole.w": 70
+      },
+      "run_id": "run-57ed2b7c07725b33fc33",
+      "lane": "elastic",
+      "status": "unknown",
+      "cached": false,
+      "estimate": {
+        "lane": "elastic",
+        "machine": "c2d-standard-16",
+        "workers": 8,
+        "ndof": 34731,
+        "ndof_run": "sym",
+        "elements": 6645,
+        "kpoints": 24,
+        "symmetry_runs": 2,
+        "sec_per_k_model": 33.1,
+        "worker_rss_gb_model": 2.41,
+        "solver_hours_model": 0.0551,
+        "hours_limit": 0.15,
+        "usd_rate_per_h": 0.75,
+        "usd_expected": 0.079,
+        "usd_ceiling": 0.11
+      },
+      "usd_ceiling": 0.11
+    },
+    {
+      "index": 19,
+      "assignments": {
+        "geometry.lattice.a": 550,
+        "geometry.hole.h": 490,
+        "geometry.hole.w": 100
+      },
+      "run_id": "run-d99169f34a2d22d042cc",
+      "lane": "elastic",
+      "status": "unknown",
+      "cached": false,
+      "estimate": {
+        "lane": "elastic",
+        "machine": "c2d-standard-16",
+        "workers": 8,
+        "ndof": 34107,
+        "ndof_run": "sym",
+        "elements": 6553,
+        "kpoints": 24,
+        "symmetry_runs": 2,
+        "sec_per_k_model": 32.1,
+        "worker_rss_gb_model": 2.39,
+        "solver_hours_model": 0.0536,
+        "hours_limit": 0.15,
+        "usd_rate_per_h": 0.75,
+        "usd_expected": 0.078,
+        "usd_ceiling": 0.11
+      },
+      "usd_ceiling": 0.11
+    },
+    {
+      "index": 20,
+      "assignments": {
+        "geometry.lattice.a": 550,
+        "geometry.hole.h": 490,
+        "geometry.hole.w": 140
+      },
+      "run_id": "run-c87d99efb509f9d50d03",
+      "lane": "elastic",
+      "status": "unknown",
+      "cached": false,
+      "estimate": {
+        "lane": "elastic",
+        "machine": "c2d-standard-16",
+        "workers": 8,
+        "ndof": 31314,
+        "ndof_run": "sym",
+        "elements": 6008,
+        "kpoints": 24,
+        "symmetry_runs": 2,
+        "sec_per_k_model": 28.2,
+        "worker_rss_gb_model": 2.29,
+        "solver_hours_model": 0.0469,
+        "hours_limit": 0.15,
+        "usd_rate_per_h": 0.75,
+        "usd_expected": 0.073,
+        "usd_ceiling": 0.11
+      },
+      "usd_ceiling": 0.11
+    },
+    {
+      "index": 21,
+      "assignments": {
+        "geometry.lattice.a": 550,
+        "geometry.hole.h": 465,
+        "geometry.hole.w": 70
+      },
+      "run_id": "run-69dc5c1b365262b19ec3",
+      "lane": "elastic",
+      "status": "unknown",
+      "cached": false,
+      "estimate": {
+        "lane": "elastic",
+        "machine": "c2d-standard-16",
+        "workers": 8,
+        "ndof": 36540,
+        "ndof_run": "sym",
+        "elements": 7072,
+        "kpoints": 24,
+        "symmetry_runs": 2,
+        "sec_per_k_model": 35.8,
+        "worker_rss_gb_model": 2.48,
+        "solver_hours_model": 0.0596,
+        "hours_limit": 0.2,
+        "usd_rate_per_h": 0.75,
+        "usd_expected": 0.082,
+        "usd_ceiling": 0.15
+      },
+      "usd_ceiling": 0.15
+    },
+    {
+      "index": 22,
+      "assignments": {
+        "geometry.lattice.a": 550,
+        "geometry.hole.h": 465,
+        "geometry.hole.w": 100
+      },
+      "run_id": "run-d604729dc14393db835b",
+      "lane": "elastic",
+      "status": "unknown",
+      "cached": false,
+      "estimate": {
+        "lane": "elastic",
+        "machine": "c2d-standard-16",
+        "workers": 8,
+        "ndof": 35988,
+        "ndof_run": "sym",
+        "elements": 6969,
+        "kpoints": 24,
+        "symmetry_runs": 2,
+        "sec_per_k_model": 34.9,
+        "worker_rss_gb_model": 2.46,
+        "solver_hours_model": 0.0582,
+        "hours_limit": 0.2,
+        "usd_rate_per_h": 0.75,
+        "usd_expected": 0.081,
+        "usd_ceiling": 0.15
+      },
+      "usd_ceiling": 0.15
+    },
+    {
+      "index": 23,
+      "assignments": {
+        "geometry.lattice.a": 550,
+        "geometry.hole.h": 465,
+        "geometry.hole.w": 140
+      },
+      "run_id": "run-c7db01f068960534b42c",
+      "lane": "elastic",
+      "status": "unknown",
+      "cached": false,
+      "estimate": {
+        "lane": "elastic",
+        "machine": "c2d-standard-16",
+        "workers": 8,
+        "ndof": 33004,
+        "ndof_run": "sym",
+        "elements": 6378,
+        "kpoints": 24,
+        "symmetry_runs": 2,
+        "sec_per_k_model": 30.6,
+        "worker_rss_gb_model": 2.35,
+        "solver_hours_model": 0.0509,
+        "hours_limit": 0.15,
+        "usd_rate_per_h": 0.75,
+        "usd_expected": 0.076,
+        "usd_ceiling": 0.11
+      },
+      "usd_ceiling": 0.11
+    },
+    {
+      "index": 24,
+      "assignments": {
+        "geometry.lattice.a": 550,
+        "geometry.hole.h": 435,
+        "geometry.hole.w": 70
+      },
+      "run_id": "run-655a1bfd61de8468ecac",
+      "lane": "elastic",
+      "status": "unknown",
+      "cached": false,
+      "estimate": {
+        "lane": "elastic",
+        "machine": "c2d-standard-16",
+        "workers": 8,
+        "ndof": 37147,
+        "ndof_run": "sym",
+        "elements": 7213,
+        "kpoints": 24,
+        "symmetry_runs": 2,
+        "sec_per_k_model": 36.7,
+        "worker_rss_gb_model": 2.5,
+        "solver_hours_model": 0.0612,
+        "hours_limit": 0.2,
+        "usd_rate_per_h": 0.75,
+        "usd_expected": 0.083,
+        "usd_ceiling": 0.15
+      },
+      "usd_ceiling": 0.15
+    },
+    {
+      "index": 25,
+      "assignments": {
+        "geometry.lattice.a": 550,
+        "geometry.hole.h": 435,
+        "geometry.hole.w": 100
+      },
+      "run_id": "run-f0fb7007ea67a2a8e644",
+      "lane": "elastic",
+      "status": "unknown",
+      "cached": false,
+      "estimate": {
+        "lane": "elastic",
+        "machine": "c2d-standard-16",
+        "workers": 8,
+        "ndof": 36801,
+        "ndof_run": "sym",
+        "elements": 7170,
+        "kpoints": 24,
+        "symmetry_runs": 2,
+        "sec_per_k_model": 36.2,
+        "worker_rss_gb_model": 2.49,
+        "solver_hours_model": 0.0603,
+        "hours_limit": 0.2,
+        "usd_rate_per_h": 0.75,
+        "usd_expected": 0.083,
+        "usd_ceiling": 0.15
+      },
+      "usd_ceiling": 0.15
+    },
+    {
+      "index": 26,
+      "assignments": {
+        "geometry.lattice.a": 550,
+        "geometry.hole.h": 435,
+        "geometry.hole.w": 140
+      },
+      "run_id": "run-9eafbfb87e8897aab6f3",
+      "lane": "elastic",
+      "status": "unknown",
+      "cached": false,
+      "estimate": {
+        "lane": "elastic",
+        "machine": "c2d-standard-16",
+        "workers": 8,
+        "ndof": 33696,
+        "ndof_run": "sym",
+        "elements": 6558,
+        "kpoints": 24,
+        "symmetry_runs": 2,
+        "sec_per_k_model": 31.5,
+        "worker_rss_gb_model": 2.37,
+        "solver_hours_model": 0.0526,
+        "hours_limit": 0.15,
+        "usd_rate_per_h": 0.75,
+        "usd_expected": 0.077,
+        "usd_ceiling": 0.11
+      },
+      "usd_ceiling": 0.11
+    },
+    {
+      "index": 27,
+      "assignments": {
+        "geometry.lattice.a": 650,
+        "geometry.hole.h": 590,
+        "geometry.hole.w": 70
+      },
+      "run_id": "run-39fd4788f3e50e85c979",
+      "lane": "elastic",
+      "status": "unknown",
+      "cached": false,
+      "estimate": {
+        "lane": "elastic",
+        "machine": "c2d-standard-16",
+        "workers": 8,
+        "ndof": 59365,
+        "ndof_run": "sym",
+        "elements": 12341,
+        "kpoints": 24,
+        "symmetry_runs": 2,
+        "sec_per_k_model": 75.9,
+        "worker_rss_gb_model": 3.62,
+        "solver_hours_model": 0.1265,
+        "hours_limit": 0.3,
+        "usd_rate_per_h": 0.75,
+        "usd_expected": 0.132,
+        "usd_ceiling": 0.22
+      },
+      "usd_ceiling": 0.22
+    },
+    {
+      "index": 28,
+      "assignments": {
+        "geometry.lattice.a": 650,
+        "geometry.hole.h": 590,
+        "geometry.hole.w": 100
+      },
+      "run_id": "run-af7c6af4cdd3e98da765",
+      "lane": "elastic",
+      "status": "unknown",
+      "cached": false,
+      "estimate": {
+        "lane": "elastic",
+        "machine": "c2d-standard-16",
+        "workers": 8,
+        "ndof": 55256,
+        "ndof_run": "sym",
+        "elements": 11394,
+        "kpoints": 24,
+        "symmetry_runs": 2,
+        "sec_per_k_model": 67.9,
+        "worker_rss_gb_model": 3.38,
+        "solver_hours_model": 0.1132,
+        "hours_limit": 0.25,
+        "usd_rate_per_h": 0.75,
+        "usd_expected": 0.122,
+        "usd_ceiling": 0.19
+      },
+      "usd_ceiling": 0.19
+    },
+    {
+      "index": 29,
+      "assignments": {
+        "geometry.lattice.a": 650,
+        "geometry.hole.h": 590,
+        "geometry.hole.w": 140
+      },
+      "run_id": "run-0cdedae86159ee5cc621",
+      "lane": "elastic",
+      "status": "unknown",
+      "cached": false,
+      "estimate": {
+        "lane": "elastic",
+        "machine": "c2d-standard-16",
+        "workers": 8,
+        "ndof": 50377,
+        "ndof_run": "sym",
+        "elements": 10330,
+        "kpoints": 24,
+        "symmetry_runs": 2,
+        "sec_per_k_model": 58.8,
+        "worker_rss_gb_model": 3.11,
+        "solver_hours_model": 0.0981,
+        "hours_limit": 0.25,
+        "usd_rate_per_h": 0.75,
+        "usd_expected": 0.111,
+        "usd_ceiling": 0.19
+      },
+      "usd_ceiling": 0.19
+    },
+    {
+      "index": 30,
+      "assignments": {
+        "geometry.lattice.a": 650,
+        "geometry.hole.h": 565,
+        "geometry.hole.w": 70
+      },
+      "run_id": "run-9294b19e1b26dd372180",
+      "lane": "elastic",
+      "status": "unknown",
+      "cached": false,
+      "estimate": {
+        "lane": "elastic",
+        "machine": "c2d-standard-16",
+        "workers": 8,
+        "ndof": 60080,
+        "ndof_run": "sym",
+        "elements": 12489,
+        "kpoints": 24,
+        "symmetry_runs": 2,
+        "sec_per_k_model": 77.3,
+        "worker_rss_gb_model": 3.66,
+        "solver_hours_model": 0.1289,
+        "hours_limit": 0.3,
+        "usd_rate_per_h": 0.75,
+        "usd_expected": 0.134,
+        "usd_ceiling": 0.22
+      },
+      "usd_ceiling": 0.22
+    },
+    {
+      "index": 31,
+      "assignments": {
+        "geometry.lattice.a": 650,
+        "geometry.hole.h": 565,
+        "geometry.hole.w": 100
+      },
+      "run_id": "run-257897d45e2554b0b57e",
+      "lane": "elastic",
+      "status": "unknown",
+      "cached": false,
+      "estimate": {
+        "lane": "elastic",
+        "machine": "c2d-standard-16",
+        "workers": 8,
+        "ndof": 55580,
+        "ndof_run": "sym",
+        "elements": 11451,
+        "kpoints": 24,
+        "symmetry_runs": 2,
+        "sec_per_k_model": 68.5,
+        "worker_rss_gb_model": 3.4,
+        "solver_hours_model": 0.1142,
+        "hours_limit": 0.25,
+        "usd_rate_per_h": 0.75,
+        "usd_expected": 0.123,
+        "usd_ceiling": 0.19
+      },
+      "usd_ceiling": 0.19
+    },
+    {
+      "index": 32,
+      "assignments": {
+        "geometry.lattice.a": 650,
+        "geometry.hole.h": 565,
+        "geometry.hole.w": 140
+      },
+      "run_id": "run-259d985f195900eda676",
+      "lane": "elastic",
+      "status": "unknown",
+      "cached": false,
+      "estimate": {
+        "lane": "elastic",
+        "machine": "c2d-standard-16",
+        "workers": 8,
+        "ndof": 51489,
+        "ndof_run": "sym",
+        "elements": 10617,
+        "kpoints": 24,
+        "symmetry_runs": 2,
+        "sec_per_k_model": 60.9,
+        "worker_rss_gb_model": 3.17,
+        "solver_hours_model": 0.1014,
+        "hours_limit": 0.25,
+        "usd_rate_per_h": 0.75,
+        "usd_expected": 0.114,
+        "usd_ceiling": 0.19
+      },
+      "usd_ceiling": 0.19
+    },
+    {
+      "index": 33,
+      "assignments": {
+        "geometry.lattice.a": 650,
+        "geometry.hole.h": 535,
+        "geometry.hole.w": 70
+      },
+      "run_id": "run-b650cd52e98b37c67785",
+      "lane": "elastic",
+      "status": "unknown",
+      "cached": false,
+      "estimate": {
+        "lane": "elastic",
+        "machine": "c2d-standard-16",
+        "workers": 8,
+        "ndof": 60881,
+        "ndof_run": "sym",
+        "elements": 12721,
+        "kpoints": 24,
+        "symmetry_runs": 2,
+        "sec_per_k_model": 78.9,
+        "worker_rss_gb_model": 3.71,
+        "solver_hours_model": 0.1315,
+        "hours_limit": 0.3,
+        "usd_rate_per_h": 0.75,
+        "usd_expected": 0.136,
+        "usd_ceiling": 0.22
+      },
+      "usd_ceiling": 0.22
+    },
+    {
+      "index": 34,
+      "assignments": {
+        "geometry.lattice.a": 650,
+        "geometry.hole.h": 535,
+        "geometry.hole.w": 100
+      },
+      "run_id": "run-abd217796df6588d8ecd",
+      "lane": "elastic",
+      "status": "unknown",
+      "cached": false,
+      "estimate": {
+        "lane": "elastic",
+        "machine": "c2d-standard-16",
+        "workers": 8,
+        "ndof": 57543,
+        "ndof_run": "sym",
+        "elements": 11929,
+        "kpoints": 24,
+        "symmetry_runs": 2,
+        "sec_per_k_model": 72.3,
+        "worker_rss_gb_model": 3.51,
+        "solver_hours_model": 0.1205,
+        "hours_limit": 0.3,
+        "usd_rate_per_h": 0.75,
+        "usd_expected": 0.128,
+        "usd_ceiling": 0.22
+      },
+      "usd_ceiling": 0.22
+    },
+    {
+      "index": 35,
+      "assignments": {
+        "geometry.lattice.a": 650,
+        "geometry.hole.h": 535,
+        "geometry.hole.w": 140
+      },
+      "run_id": "run-ddcb8b4fe90a36431798",
+      "lane": "elastic",
+      "status": "unknown",
+      "cached": false,
+      "estimate": {
+        "lane": "elastic",
+        "machine": "c2d-standard-16",
+        "workers": 8,
+        "ndof": 53801,
+        "ndof_run": "sym",
+        "elements": 11158,
+        "kpoints": 24,
+        "symmetry_runs": 2,
+        "sec_per_k_model": 65.2,
+        "worker_rss_gb_model": 3.3,
+        "solver_hours_model": 0.1086,
+        "hours_limit": 0.25,
+        "usd_rate_per_h": 0.75,
+        "usd_expected": 0.119,
+        "usd_ceiling": 0.19
+      },
+      "usd_ceiling": 0.19
+    }
+  ],
+  "new_runs": 36,
+  "hours_limit": 0.3,
+  "usd_ceiling": 8.1,
+  "usd_expected": 3.07,
+  "submission_limit_usd": 10.0,
+  "needs_confirm": false,
+  "month_cap_usd": 50.0,
+  "month_reserved_usd": 0.0,
+  "month_left_usd": 50.0,
+  "fits_month_cap": true,
+  "lane": "elastic",
+  "price_model": "c2d-standard-16 at $0.75/h; ceiling = hours_limit (Batch kills the task there, no retries) x rate, per run"
+}

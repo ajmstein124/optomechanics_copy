@@ -1,0 +1,33 @@
+{
+  "run_id": "run-f07756d5c6f416450141",
+  "engine": "npc-elastic/0.1.0/ceffa180e6b5591b",
+  "attempt": "ph-api-abby-shield-7f4784bf-eef2-48600-2-1792711479",
+  "spec_sha256": "294c125de62d7895ae889ddd29da5adc83d293ec5edefced5183686d77b8e3e6",
+  "mesh": {
+    "n_elements": 5685,
+    "n_vertices": 1718,
+    "mesh_sha256": "98199a5a68c17f41f33cc7bc17088e96d8263dd954f70d46509f403bfba8a268"
+  },
+  "files": {
+    "log.txt": {
+      "sha256": "20fb24ed67ef1418e42095d5618b316d8f624fef03a1ca186a45cc0063c9ec70",
+      "bytes": 4092
+    },
+    "result.json": {
+      "sha256": "9947cb5812be49549723856092e6802260c8298a0ff1fe9972f860ab182e4ccf",
+      "bytes": 57766
+    },
+    "shield_dmitry_antisym.csv": {
+      "sha256": "fc22ad3f1466a721b28aca2d559542c9a30807d05aea3600d47662a6d136e88d",
+      "bytes": 33242
+    },
+    "shield_dmitry_sym.csv": {
+      "sha256": "639308b75b441c736159984dbb86ead9371b1328000a8dc6794cd79ba79eb5b8",
+      "bytes": 33186
+    },
+    "spec.json": {
+      "sha256": "294c125de62d7895ae889ddd29da5adc83d293ec5edefced5183686d77b8e3e6",
+      "bytes": 582
+    }
+  }
+}

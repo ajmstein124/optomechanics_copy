@@ -1,23 +1,68 @@
 # Results summary
 
-Tracks the best devices and key learnings. COMSOL, ideal geometry, diamond, t = 120 nm, target 619 nm. Last updated 2026-10-16 23:00.
+Tracks the best devices and key learnings. COMSOL, ideal geometry, diamond, t = 120 nm, target 619 nm. Last updated 2026-10-20.
 
 ## Best devices
 
+### Gap-confined (breathing mode INSIDE the mirror Y+Z+ gap; user requirement 2026-10-19)
+
+All devices below the "previous best" line failed this test: their breathing mode sits above the mirror gap. The fix is the reverse
+taper direction: a small-hole mirror (hx/a 0.40, hy/w 0.60) raises the gap top, and center holes LARGER than the mirror's (χ < 0)
+soften the center. 60 nm, vertical walls, M 10, 10 mirror cells (`runs/surrogate_explore/gapconf`, design from `analyze_gap_cells.py --mf 60 --strict`).
+
+| design | w | a | taper (d, ξ, χ) | resonance | optical Q | breathing | mirror gap | margin | min feat. |
+|---|---|---|---|---|---|---|---|---|---|
+| **w650_m186_c455_d086** | 650 | 189.5 | 0.086, 1.79, −6.97 | 619.31 nm | **3.8e6** | 9.81 GHz | 7.47–10.87 | 1.06 | 70 |
+| w650_m186_c455_d118 | 650 | 195.4 | 0.118, 1.00, −4.59 | 619.37 nm | 2.8e6 | 9.83 GHz | 7.46–10.87 | 1.04 | 70 |
+| w650_m192_hy66_c455_d146 (hy/w .66) | 650 | 201.2 | 0.146, 1.20, −2.46 | 619.34 nm | 2.4e6 | 9.74 GHz | 6.52–10.77 | 1.03 | 69 |
+| w700_m186_c490_d118 | 700 | 194.2 | 0.118, 1.00, −4.59 | 619.48 nm | 2.3e6 | 9.08 GHz (S 0.88) | 6.95–10.09 | 1.01 | 69 |
+| w700_m198_c420_d172 | 700 | 202.3 | 0.172, 1.15, −1.41 | 619.28 nm | 8.9e5 | 9.24 GHz | 6.94–10.09 | 0.85 | 68 |
+| w700_m192_c420_d146 | 700 | 197.1 | 0.146, 1.57, −1.93 | 619.38 nm | 8.8e5 | 9.23 GHz | 6.95–10.09 | 0.86 | 68 |
+| w700_m186_c420_d118 | 700 | 191.8 | 0.118, 2.22, −2.73 | 619.52 nm | 5.9e5 | 9.23 GHz | 6.95–10.10 | 0.87 | 68 |
+
+- Mirror gap from 13 k-points at the final a_m (the gap top is a band-2 dip near k ≈ 0.25, not at Γ; the 4-point sweep overestimated it by 0.5 GHz).
+- Breathing = lowest clean mode (loc ≥ 0.8, B > 0.5, S ≥ 0.7); all have loc 0.98–0.99. Displacement fraction in the last 500 nm before the clamp
+  1e-9–1e-7 (old designs 1e-4–1e-3): the mode decays inside the mirror, as a gap mode should.
+- The unit-cell proxy (center Γ − 0.23 GHz) predicted the breathing frequency within 0.2 GHz.
+- Cost: optical Q 0.6–3.8e6, below the old devices' 1–2e7 (smaller mirror holes = weaker mirror).
+- Zero-point strain of the breathing mode (midplane): volumetric 1.3–1.5e-8, εxx−εyy 1.6–1.8e-8, peaking inside the optical mode (m_eff 141–199 fg).
+  Review figures: `runs/surrogate_explore/gapconf/figures/` (per design: bands with modes, Ey, deformed breathing mode, strain; plus overviews).
+- No 80 nm pair passes: needs a width taper (wide center, narrow mirror).
+- Device page: `best_devices/60nm_w650_d0.086_xi1.79_chi-6.97_gapconf/` (best_devices/ now holds gap-confined devices only; older ones in `best_devices/not_gap_confined/`).
+- These 7 are the frozen "first gap-confined set" for the authorized Dmitry run: `runs/dmitry/gapconf1_dmitry/designs_dmitry.json` (not submitted).
+
+### Previous best (breathing mode ABOVE the mirror gap)
+
+Vertical sidewalls (ideal geometry, M 10, 10 mirror cells):
+
 | | 60 nm min feature | 80 nm min feature |
 |---|---|---|
-| beam width | 650 nm | 700 nm |
-| mirror cell (hx/a, hy/w) | 0.53, 0.77 | 0.45, 0.70 |
-| taper | d 0.10, ξ 6, χ 4 | d 0.10, ξ 4, χ 3.5 (base) |
-| a | 190.3 nm | 182.8 nm |
-| resonance / optical Q | 619.50 nm / 1.8e7 | 619.29 nm / 3.4e6 |
-| breathing mode | 9.67 GHz (loc 0.95, S 1.0) | 9.73 GHz (loc 0.86, S 1.0) |
-| smallest feature | 64 nm | 82 nm |
-| Lumerical check (GPU, v251) | 618.77 nm / Q 1.1e7 | 618.73 nm / Q ≥ 8.6e6 |
-| mode volume (estimate) | 1.32 (λ/n)³, Q/V 1.4e7 | 1.55 (λ/n)³, Q/V 2.2e6 |
-| details | `best_devices/60nm_w650_d0.10_xi6_chi4/` | `best_devices/80nm_w700_d0.10_xi4_chi3.5/` |
+| beam width | 650 nm | 713 nm |
+| mirror cell (hx/a, hy/w) | 0.53, 0.77 | 0.504, 0.765 |
+| taper | d 0.10, ξ 6, χ 4 | d 0.135, ξ 2.1, χ 3.55 |
+| a | 190.3 nm | 189.6 nm |
+| resonance / optical Q | 619.50 nm / 1.8e7 | 619.32 nm / 2.15e7 |
+| breathing mode | 9.67 GHz (loc 0.95, S 1.0) | 9.84 GHz (loc 0.86 / 0.99, S 1.0) |
+| smallest feature | 64 nm | 80.3 nm |
+| Q at σ 1 nm disorder (median) | 2.1e5 | 3.9e5 |
+| found by | width study + taper grid | Bayesian search (bo2_0) |
+| details | `best_devices/not_gap_confined/60nm_w650_d0.10_xi6_chi4/` | `best_devices/not_gap_confined/80nm_w713_d0.135_xi2.1_chi3.55_BO/` |
 
-Both meet breathing ≤ 10 GHz. Both optical Qs are far above typical fabricated diamond nanobeams (1e4–1e5).
+The previous 80 nm device (w700, d 0.10, ξ 4, χ 3.5, a 182.8: 619.29 nm, Q 3.4e6, 9.73 GHz) is kept in `best_devices/not_gap_confined/80nm_w700_d0.10_xi4_chi3.5/`.
+
+Angled sidewalls (full-thickness model; mask = top; best with a clean breathing mode ≤ 10 GHz):
+
+| min feature / angle | point | w, a (nm) | hx/a, hy/w | taper (d, ξ, χ) | resonance | optical Q | breathing |
+|---|---|---|---|---|---|---|---|
+| 60 nm / 5° | bo41_3 | 692, 188.8 | 0.525, 0.696 | 0.125, 3.13, 2.77 | 621.3 nm | 5.2e6 | 9.59 GHz (loc 0.93) |
+| 60 nm / 5° (alt) | bo41_0 | 659, 189.8 | 0.527, 0.768 | 0.124, 4.52, 3.56 | 621.6 nm | 7.5e6 | 9.98 GHz (loc 0.78 / 0.93) |
+| 60 nm / 10° | bo42_3 | 698, 184.8 | 0.526, 0.689 | 0.122, 2.39, 2.83 | 622.3 nm | 2.5e6 | 9.89 GHz (loc 0.85) |
+| 80 nm / 5° | bo31_2 | 722, 181.3 | 0.498, 0.696 | 0.105, 2.96, 2.88 | 619.8 nm | 1.8e6 | 9.95 GHz (loc 0.59 / 0.95) |
+| 80 nm / 10° | none ≤ 10 GHz yet; best bo32_3 | 709, 180.6 | 0.497, 0.743 | 0.110, 2.58, 3.64 | 620.4 nm | 1.5e6 | 10.29 GHz |
+| 80 nm / 15° | infeasible at t 120 (see below) | | | | | | |
+| 60 nm / 15° | batch 43 queued (7 points) | | | | | | |
+
+Angled resonances land 0.4–3 nm red of 619.4 nm; a ≈ 0.3% period rescale fixes this with negligible change in Q or features.
 
 ## Learnings
 
@@ -88,6 +133,10 @@ At 80 nm the bottom-opening rule leaves few candidates (376 at 5°, 190 at 10°)
 
 **First angled search results (80 nm, 10°, batch 32):** the resonance correction works (620–623 nm), but Q is only 4e5–1.5e6 and breathing 10.3–10.9 GHz.
 None reach ≤ 10 GHz yet; a second round (wider beams) is queued.
+**Batch 41 (60 nm, 5°):** Q 1.35–7.5e6; two clean breathing modes ≤ 10 GHz (bo41_3 9.59 GHz Q 5.2e6; bo41_0 9.98 GHz Q 7.5e6).
+**Batch 31 (80 nm, 5°):** Q 1.3–8.1e6; the highest-Q point (bo31_1, 8.1e6) sits at 10.31 GHz; bo31_2 (Q 1.8e6, 9.95) and bo31_3 (Q 1.3e6, 9.80) meet ≤ 10 GHz.
+At 5°, the best Qs are about 3× below the vertical-wall bests; at 10°, about 15× below.
+The log's "min feat" column for angled points is the bottom hole opening (hx − 2t·tanθ); mask features are all ≥ the target.
 **80 nm at 15° is infeasible at 619 nm** for t = 120 nm. The walls red-shift about 21 nm, so a ≈ 170–180 nm, and holes need ≥ 84 nm at the top (to stay ≥ 20 nm open
 at the bottom) while bridges stay ≥ 80 nm. Relaxing the bottom-opening rule, measuring min features at mid-depth, or a thinner membrane would change this.
 **Compute note:** only ONE full-thickness model fits in memory on the COMSOL machine at a time (about 23 min per solve).
@@ -104,17 +153,34 @@ at the bottom) while bridges stay ≥ 80 nm. Relaxing the bottom-opening rule, m
 - **The higher-order (y-odd) family stays above 619 nm up to w about 800** (legume, with the band edge at X falling toward about 510 THz). Confirm in COMSOL.
 - **Taller holes (C1/C2) and the locked-x taper don't help:** Q about 3e6 with breathing pinned near 10.05 GHz for every locked-x shape tried.
 
+## Cross phonon shield on the best gap-confined device (2026-10-22, `runs/shield_619`, report `docs/shield_report/omc_shield_report.pdf`)
+
+- Shield cell (square lattice, cross holes, 60 nm features): **a 450, h 390, w 140, fillet 20 nm → complete gap 9.40–11.47 GHz (20 %)**, holds the 9.81 and 10.57 GHz modes.
+  Designed on the **Dmitry cloud** (12-cell sweep, ~$1, data in `runs/dmitry/shield1_dmitry/`); COMSOL re-check of that cell: same gap, median |Δf/f| 6e-4.
+- Full structure (COMSOL; beam → anchor pad in a 120 nm slab, 4 shield periods, PML): breathing mode 9.813 GHz in every case.
+
+| mirror cells | Q_m no shield | Q_m with shield | gain |
+|---|---|---|---|
+| 2 | 9.0e3 | 1.5e6 | 160× |
+| 4 | 1.2e7 | 3.2e9 | 260× |
+| 10 | 1.65e7 | 2.8e9 | 170× |
+
+- Checks (10 mirror cells): PML 1.5 → 3 µm: no change (both cases); slab mesh 30 → 22 nm: +3 %; 2 shield periods: 5.6e8 (5× lower) → the with-shield floor is shield tunneling, more periods raise it.
+- Without the shield Q_m saturates at ~1.5e7 (anchor radiation). Q_m > 1e9 is ideal-geometry anchor loss only; disorder and material loss will limit real devices.
+- Full cavity + shield cannot run on the Dmitry cloud yet (resonator lane = beam into PML or clamped only); requested in laghai/nanophotonics-cloud issue #163.
+
 ## Running
 
-- **Locked x-fill taper (`lock_x`), w700, hx/a 0.50, hy/w 0.77, 80 nm** (`runs/cavity_619_width/w700_mf80_LX`). Mirror gap 458–568 THz, breathing window at Γ 7.94–10.17 GHz.
-  Base shape on the 619 nm line: d 0.10 a 184.3 (Q about 2.9e6, 10.04 GHz, loc about 0.9); d 0.13 a 188.3 (Q about 3.3e6, 10.05 GHz, loc about 0.85); d 0.16 a 192.5 (Q about 1.3e6, loc < 0.8).
-  So far level with the current 80 nm device on Q, breathing just above 10 GHz.
-  **Running (10/16 22:55):** taper shapes, `run_w700_lockx_shapes.py`: (ξ, χ) = (2, 4), (4, 4.5), (6, 4), (6, 5), (8, 5) at d 0.10 and 0.13, bracketed upward. The first run bracketed downward, and with lock_x the center holes go below 80 nm there, so 0 shapes ran. With lock_x, ξ and χ only change the center hole height.
+- Nothing on COMSOL (gapconf done 2026-10-20; batch 43 done, not yet collected).
+
+- **Sidewall BO stream** (one full-thickness model at a time): batches 32, 41, 31, 42 done; **34 (80 nm, 10°, round 2) running**, then 43 (60 nm, 15°). bo34_0: Q 1.6e5 at 9.63 GHz (w 763; wide beams reach ≤ 10 GHz at 10° but lose Q).
+- Batch 42 (60 nm, 10°): Q 0.4–2.5e6; bo42_3 9.89 GHz Q 2.5e6; bo42_2 10.14 GHz Q 1.0e6.
+- Locked x-fill taper (`lock_x`): done; Q about 3e6 with breathing pinned near 10.05 GHz for every shape (no gain).
 
 ## Next / ideas
 
 - Taper variants: a constant-period hole-only (quadratic) taper; η and M sweeps; more mirror cells; rounded-rectangle holes; a wider beam at the center only.
-- Mechanical Q with a PML, support or cross shield. Strain tensor at likely SnV sites. Fix the g₀ bug. Even-hole cavity. Full check list for the finals: `best_devices/CHECKS.md`.
+- Shield: Q_m with disorder (σ 1–2 nm) and 6 shield periods. Strain tensor at likely SnV sites. Fix the g₀ bug. Even-hole cavity. Full check list for the finals: `best_devices/CHECKS.md`.
 - Tabled: `diamond_a_large`, the 2D snowflake sweep for a complete gap ≤ 10 GHz (6 of 45 done).
 
 > **Dmitry cloud software rule (user, 2026-10-19):** never use the Dmitry cloud solver service (laghai/nanophotonics-cloud) without explicit per-run permission from the user. All its files/folders end in `_dmitry`, state that they were run on the Dmitry cloud software, and are kept separate from Lumerical/COMSOL data. See CLAUDE.md.

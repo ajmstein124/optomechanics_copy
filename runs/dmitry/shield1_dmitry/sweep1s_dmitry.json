@@ -1,0 +1,122 @@
+{
+ "base": {
+  "schema": "npc.elastic.spec/0",
+  "geometry": {
+   "lattice": {
+    "type": "square",
+    "a": 450
+   },
+   "t": 120,
+   "hole": {
+    "family": "cross",
+    "h": 365,
+    "w": 100,
+    "fillet": 20
+   }
+  },
+  "material": {
+   "model": "isotropic",
+   "E": 1050000000000.0,
+   "nu": 0.07,
+   "rho": 3500
+  },
+  "symmetries": [
+   "sym",
+   "antisym"
+  ],
+  "kpath": {
+   "points": [
+    "G",
+    "X",
+    "M",
+    "G"
+   ],
+   "n_per_segment": 8
+  },
+  "mesh": {
+   "hmax_over_t": 5,
+   "order": 2
+  },
+  "solver": {
+   "n_modes": 20,
+   "shift_hz": 10000000000.0
+  },
+  "outputs": {
+   "parity": true,
+   "fields": false,
+   "csv_prefix": "shield_dmitry"
+  }
+ },
+ "axes": [
+  {
+   "kind": "zip",
+   "paths": [
+    "geometry.lattice.a",
+    "geometry.hole.h",
+    "geometry.hole.w"
+   ],
+   "rows": [
+    [
+     350,
+     290,
+     100
+    ],
+    [
+     350,
+     250,
+     100
+    ],
+    [
+     450,
+     390,
+     100
+    ],
+    [
+     450,
+     350,
+     100
+    ],
+    [
+     550,
+     490,
+     100
+    ],
+    [
+     550,
+     450,
+     100
+    ],
+    [
+     650,
+     590,
+     100
+    ],
+    [
+     650,
+     550,
+     100
+    ],
+    [
+     450,
+     390,
+     70
+    ],
+    [
+     450,
+     390,
+     140
+    ],
+    [
+     550,
+     490,
+     70
+    ],
+    [
+     550,
+     490,
+     140
+    ]
+   ]
+  }
+ ]
+}

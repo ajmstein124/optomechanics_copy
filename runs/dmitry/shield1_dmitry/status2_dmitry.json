@@ -1,0 +1,65 @@
+{
+  "sweep_id": "sweep-5ff274a306306db50948",
+  "runs": [
+    {
+      "assignments": {
+        "geometry.hole.h": 385,
+        "geometry.hole.w": 140,
+        "geometry.lattice.a": 450
+      },
+      "index": 0,
+      "run_id": "run-a16581f387388bff8efe",
+      "status": "done"
+    },
+    {
+      "assignments": {
+        "geometry.hole.h": 385,
+        "geometry.hole.w": 160,
+        "geometry.lattice.a": 450
+      },
+      "index": 1,
+      "run_id": "run-90bfc39809568c7538dd",
+      "status": "done"
+    },
+    {
+      "assignments": {
+        "geometry.hole.h": 380,
+        "geometry.hole.w": 150,
+        "geometry.lattice.a": 450
+      },
+      "index": 2,
+      "run_id": "run-f07756d5c6f416450141",
+      "status": "done"
+    },
+    {
+      "assignments": {
+        "geometry.hole.h": 375,
+        "geometry.hole.w": 150,
+        "geometry.lattice.a": 440
+      },
+      "index": 3,
+      "run_id": "run-16c323a02e9019b769f0",
+      "status": "done"
+    },
+    {
+      "assignments": {
+        "geometry.hole.h": 395,
+        "geometry.hole.w": 150,
+        "geometry.lattice.a": 460
+      },
+      "index": 4,
+      "run_id": "run-c09cb56ea0531929444c",
+      "status": "done"
+    },
+    {
+      "assignments": {
+        "geometry.hole.h": 380,
+        "geometry.hole.w": 170,
+        "geometry.lattice.a": 450
+      },
+      "index": 5,
+      "run_id": "run-4a7d7bdb5fefcae04ec9",
+      "status": "done"
+    }
+  ]
+}
